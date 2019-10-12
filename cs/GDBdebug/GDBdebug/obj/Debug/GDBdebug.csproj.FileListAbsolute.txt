@@ -1,0 +1,10 @@
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\bin\Debug\GDBdebug.exe.config
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\bin\Debug\GDBdebug.exe
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\bin\Debug\GDBdebug.pdb
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.csprojAssemblyReference.cache
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.FormMain.resources
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.Properties.Resources.resources
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.csproj.GenerateResource.cache
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.csproj.CoreCompileInputs.cache
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.exe
+D:\gitproj\gis2sql\cs\GDBdebug\GDBdebug\obj\Debug\GDBdebug.pdb
