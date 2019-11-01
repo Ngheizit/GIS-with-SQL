@@ -1,0 +1,13 @@
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\bin\Debug\WxzGIS.exe.config
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\bin\Debug\WxzGIS.exe
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\bin\Debug\WxzGIS.pdb
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS.csprojResolveAssemblyReference.cache
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\MainWindow.baml
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\MainWindow.g.cs
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\App.g.cs
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS_MarkupCompile.cache
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS.g.resources
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS.Properties.Resources.resources
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS.csproj.GenerateResource.Cache
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS.exe
+D:\gitproj\gis2sql\this\cs\WxzGIS\WxzGIS\obj\Debug\WxzGIS.pdb

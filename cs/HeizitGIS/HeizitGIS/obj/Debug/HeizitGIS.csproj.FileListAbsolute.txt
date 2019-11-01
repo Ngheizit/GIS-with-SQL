@@ -1,0 +1,12 @@
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\bin\Debug\HeizitGIS.exe.config
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\bin\Debug\HeizitGIS.exe
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\bin\Debug\HeizitGIS.pdb
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.csprojResolveAssemblyReference.cache
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormMain.resources
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.Properties.Resources.resources
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.csproj.GenerateResource.Cache
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.exe
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.pdb
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormSignIn.resources
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormSignUp.resources
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormReset.resources
