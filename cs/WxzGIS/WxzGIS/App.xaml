@@ -1,7 +1,7 @@
 ﻿<Application x:Class="WxzGIS.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             StartupUri="SignIn_Window.xaml">
     <Application.Resources>
          
     </Application.Resources>

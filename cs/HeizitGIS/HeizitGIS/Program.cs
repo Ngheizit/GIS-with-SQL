@@ -17,10 +17,10 @@ namespace HeizitGIS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FormSignIn formLoad = new FormSignIn();
-            if (formLoad.ShowDialog() == DialogResult.OK)
+            FormSignIn form_signIn = new FormSignIn();
+            if (form_signIn.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FormMain());
+                Application.Run(new FormMain(form_signIn.ID, form_signIn.Username));
             }
         }
     }

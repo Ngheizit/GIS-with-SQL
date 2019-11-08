@@ -36,6 +36,8 @@
             this.tbx_rePassword = new System.Windows.Forms.TextBox();
             this.btn_reset = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbx_oldPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tbx_username
@@ -57,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 43);
+            this.label2.Location = new System.Drawing.Point(23, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 6;
@@ -65,7 +67,7 @@
             // 
             // tbx_password
             // 
-            this.tbx_password.Location = new System.Drawing.Point(94, 39);
+            this.tbx_password.Location = new System.Drawing.Point(94, 66);
             this.tbx_password.Name = "tbx_password";
             this.tbx_password.PasswordChar = 'ఠ';
             this.tbx_password.Size = new System.Drawing.Size(148, 21);
@@ -74,7 +76,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 70);
+            this.label4.Location = new System.Drawing.Point(23, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 7;
@@ -82,7 +84,7 @@
             // 
             // tbx_rePassword
             // 
-            this.tbx_rePassword.Location = new System.Drawing.Point(94, 67);
+            this.tbx_rePassword.Location = new System.Drawing.Point(94, 94);
             this.tbx_rePassword.Name = "tbx_rePassword";
             this.tbx_rePassword.PasswordChar = 'ఠ';
             this.tbx_rePassword.Size = new System.Drawing.Size(148, 21);
@@ -90,7 +92,7 @@
             // 
             // btn_reset
             // 
-            this.btn_reset.Location = new System.Drawing.Point(42, 102);
+            this.btn_reset.Location = new System.Drawing.Point(42, 130);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(75, 23);
             this.btn_reset.TabIndex = 3;
@@ -100,7 +102,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(147, 102);
+            this.btn_cancel.Location = new System.Drawing.Point(147, 130);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 4;
@@ -108,16 +110,36 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.Buttons_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "旧密码：";
+            // 
+            // tbx_oldPassword
+            // 
+            this.tbx_oldPassword.Location = new System.Drawing.Point(94, 39);
+            this.tbx_oldPassword.Name = "tbx_oldPassword";
+            this.tbx_oldPassword.PasswordChar = 'ఠ';
+            this.tbx_oldPassword.Size = new System.Drawing.Size(148, 21);
+            this.tbx_oldPassword.TabIndex = 1;
+            // 
             // FormReset
             // 
+            this.AcceptButton = this.btn_reset;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 137);
+            this.ClientSize = new System.Drawing.Size(265, 166);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.tbx_rePassword);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.tbx_oldPassword);
             this.Controls.Add(this.tbx_password);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.tbx_username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -138,5 +160,7 @@
         private System.Windows.Forms.TextBox tbx_rePassword;
         private System.Windows.Forms.Button btn_reset;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbx_oldPassword;
     }
 }

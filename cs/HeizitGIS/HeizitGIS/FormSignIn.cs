@@ -14,9 +14,24 @@ namespace HeizitGIS
 {
     public partial class FormSignIn : Form
     {
+        private string id;
+        public string ID
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+        private string username;
+        public string Username
+        {
+            get { return this.username; }
+            set { this.username = value; }
+        }
+
         public FormSignIn()
         {
             InitializeComponent();
+            tbx_username.Text = "希浙";
+            tbx_password.Text = "369";
         }
 
         private void Buttons_Click(object sender, EventArgs e)
@@ -28,17 +43,19 @@ namespace HeizitGIS
                 string str_Username = tbx_username.Text,
                        str_Password = tbx_password.Text;
                 // 判断用户名是否存在
-                string sql_UserCount = String.Format("SELECT COUNT(Username) FROM Users WHERE Username = '{0}'", str_Username);
-                DataTable dt_UserCount = SQLHelper.GetDataTable(sql_UserCount);
-                if (!dt_UserCount.Rows[0][0].Equals(0))
+                string sql_User = String.Format("SELECT * FROM Users WHERE Username = '{0}'", str_Username);
+                DataTable dt_User = SQLHelper.GetDataTable(sql_User);
+                if (!dt_User.Rows[0][0].Equals(0))
                 {
                     // 判断密码是否正确
                     string sql_Password = String.Format("SELECT Password FROM Users WHERE Username = '{0}'", str_Username);
                     DataTable dt_Password = SQLHelper.GetDataTable(sql_Password);
-                    if (dt_UserCount.Rows[0][0].ToString().Equals(str_Password))
+                    if (dt_Password.Rows[0][0].ToString().Equals(str_Password))
                     {
+                        this.id = dt_User.Rows[0][0].ToString();
+                        this.username = dt_User.Rows[0][1].ToString();
                         this.DialogResult = DialogResult.OK;
-                    } else { MessageBox.Show("密码不正确" + dt_UserCount.Rows[0][0].ToString()); }
+                    } else { MessageBox.Show("密码不正确"); }
                 } else { MessageBox.Show(String.Format("数据库中不存在【{0}】用户名", str_Username)); }
 
             }
@@ -93,6 +110,7 @@ namespace HeizitGIS
             }
         } 
         #endregion
+
 
     }
 }

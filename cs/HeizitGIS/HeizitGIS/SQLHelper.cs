@@ -55,5 +55,33 @@ namespace HeizitGIS
                 }
             }
         }
+
+        /// <summary>
+        /// SQL语句：查询完整表 （单表查询）
+        /// </summary>
+        /// <param name="FROM">需要查询的表</param>
+        /// <returns>返回查询某个完整表的SQL语句 字符串类型</returns>
+        public static string SQL_SelectAll(string FROM)
+        { return String.Format("SELECT * FROM {0}", FROM); }
+
+        /// <summary>
+        /// SQL语句：查询指定表中的指定列
+        /// </summary>
+        /// <param name="FROM">需要查询的表</param>
+        /// <param name="fields">需要查询的列集合</param>
+        /// <returns>返回查询某表的执行列的SQL语句 字符串类型</returns>
+        public static string SQL_SelectCols(string FROM, params string[] fields)
+        {
+            string str_fields = "";
+            for (int i = 0; i < fields.Length; i++)
+            {
+                if (i == 0)
+                    str_fields += fields[0];
+                else
+                    str_fields += "," + fields[i];
+            }
+            return String.Format("SELECT {0} FROM {1}", str_fields, FROM);
+        }
+
     }
 }

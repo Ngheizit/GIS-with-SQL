@@ -24,6 +24,14 @@ namespace HeizitGIS
                 string str_Username = tbx_username.Text,
                        str_Password = tbx_password.Text,
                        str_Repassword = tbx_rePassword.Text;
+
+                // 信息不能为空
+                if (str_Username == "" ||
+                    str_Password == "" ||
+                    str_Repassword == "")
+                { MessageBox.Show("信息填写不能为空"); return; }
+
+
                 // 判断两次密码是否一致
                 if (str_Password == str_Repassword)
                 {

@@ -1,0 +1,34 @@
+﻿<Window x:Class="WxzGIS.SignUp_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WxzGIS"
+        mc:Ignorable="d"
+        Title="注册界面" Height="207" Width="278">
+
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Content="用户名：" HorizontalContentAlignment="Center" Width="70" />
+            <TextBox x:Name="tbx_username" Width="150" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Content="密码：" HorizontalContentAlignment="Center" Width="70" />
+            <TextBox x:Name="tbx_password" Width="150" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Content="确定密码：" HorizontalContentAlignment="Center" Width="70" />
+            <TextBox x:Name="tbx_repassword" Width="150" />
+        </StackPanel>
+
+        <StackPanel Height="20" HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+            <Button x:Name="btn_yes" Content="注册" Width="60" Margin="0 0 50 0" Click="Btn_yes_Click" />
+            <Button x:Name="btn_no" Content="取消" Width="60" Click="Btn_no_Click" />
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>
