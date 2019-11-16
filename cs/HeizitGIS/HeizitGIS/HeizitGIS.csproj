@@ -85,6 +85,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AeCmd\ShowAttributeTable.cs" />
+    <Compile Include="AeCmd\ZoomToLayer.cs" />
     <Compile Include="AeUtils.cs" />
     <Compile Include="FormInfos.cs">
       <SubType>Form</SubType>

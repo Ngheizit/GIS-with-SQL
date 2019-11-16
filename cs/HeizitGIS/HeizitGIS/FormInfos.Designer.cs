@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btn_SendRead = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -40,7 +41,6 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_toName = new System.Windows.Forms.ComboBox();
-            this.btn_SendRead = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -75,10 +75,20 @@
             this.tabPage1.Text = "信息库";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btn_SendRead
+            // 
+            this.btn_SendRead.Location = new System.Drawing.Point(98, 6);
+            this.btn_SendRead.Name = "btn_SendRead";
+            this.btn_SendRead.Size = new System.Drawing.Size(76, 23);
+            this.btn_SendRead.TabIndex = 3;
+            this.btn_SendRead.Text = "标记为已读";
+            this.btn_SendRead.UseVisualStyleBackColor = true;
+            this.btn_SendRead.Click += new System.EventHandler(this.btn_SendRead_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 171);
+            this.label3.Location = new System.Drawing.Point(272, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 2;
@@ -95,9 +105,9 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(180, 7);
+            this.richTextBox2.Location = new System.Drawing.Point(9, 169);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(376, 288);
+            this.richTextBox2.Size = new System.Drawing.Size(547, 126);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
@@ -105,17 +115,19 @@
             // 
             this.listView_receive.Location = new System.Drawing.Point(9, 36);
             this.listView_receive.Name = "listView_receive";
-            this.listView_receive.Size = new System.Drawing.Size(165, 127);
+            this.listView_receive.Size = new System.Drawing.Size(259, 127);
             this.listView_receive.TabIndex = 0;
             this.listView_receive.UseCompatibleStateImageBehavior = false;
+            this.listView_receive.SelectedIndexChanged += new System.EventHandler(this.listView_receivesend_SelectedIndexChanged);
             // 
             // listView_send
             // 
-            this.listView_send.Location = new System.Drawing.Point(9, 186);
+            this.listView_send.Location = new System.Drawing.Point(274, 36);
             this.listView_send.Name = "listView_send";
-            this.listView_send.Size = new System.Drawing.Size(165, 109);
+            this.listView_send.Size = new System.Drawing.Size(282, 127);
             this.listView_send.TabIndex = 0;
             this.listView_send.UseCompatibleStateImageBehavior = false;
+            this.listView_send.SelectedIndexChanged += new System.EventHandler(this.listView_receivesend_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -165,15 +177,6 @@
             this.comboBox_toName.Name = "comboBox_toName";
             this.comboBox_toName.Size = new System.Drawing.Size(121, 20);
             this.comboBox_toName.TabIndex = 0;
-            // 
-            // btn_SendRead
-            // 
-            this.btn_SendRead.Location = new System.Drawing.Point(90, 7);
-            this.btn_SendRead.Name = "btn_SendRead";
-            this.btn_SendRead.Size = new System.Drawing.Size(76, 23);
-            this.btn_SendRead.TabIndex = 3;
-            this.btn_SendRead.Text = "标记为已读";
-            this.btn_SendRead.UseVisualStyleBackColor = true;
             // 
             // FormInfos
             // 

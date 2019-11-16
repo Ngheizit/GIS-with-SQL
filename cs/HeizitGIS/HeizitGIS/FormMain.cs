@@ -24,6 +24,8 @@ namespace HeizitGIS
         private IMapDocument m_pMapDoc;
         private string _username;
         private int _id;
+        private ToolbarMenu m_pToolbarMenu;
+
 
         public FormMain(int id, string username)
         {
@@ -35,6 +37,12 @@ namespace HeizitGIS
             this._username = username;
             this.m_pMapC2 = axMapControl_main.GetOcx() as IMapControl2;
             this.m_pMapDoc = new MapDocumentClass();
+        }
+
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            InitTOCControl();
         }
 
 
@@ -94,17 +102,17 @@ namespace HeizitGIS
                 }
             }
         }
-        private void 查看其他用户信息ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string sql = String.Format("SELECT [Object-ID], Username FROM Users WHERE Username != '{0}'", this._username);
-            DataTable dt = SQLHelper.GetDataTable(sql);
-            FormTable f_table = new FormTable(dt);
-            f_table.Show();
-        }
         private void 用户通信平台ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormInfos f_infos = new FormInfos(_id);
             f_infos.Show();
+        }
+        private void 其他ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sql = String.Format("SELECT [Object-ID] FROM ViewMsgs WHERE ToID = {0} AND IsRead = 0", _id);
+            DataTable dt = SQLHelper.GetDataTable(sql);
+            int count = dt.Rows.Count;
+            用户通信平台ToolStripMenuItem.Text = String.Format("用户通信平台(未处理信息: {0}条)", count);
         }
         #endregion
 
@@ -250,6 +258,52 @@ namespace HeizitGIS
             }
         }
         #endregion
+
+        #region → TOCC控件HitTest()事件
+        private void InitTOCControl()
+        {
+            object[] cmds = new object[] { 
+                new AeCmd.ShowAttributeTable(),
+                new AeCmd.ZoomToLayer()
+            };
+            m_pToolbarMenu = new ToolbarMenu();
+            for (int i = 0; i < cmds.Length; i++)
+                m_pToolbarMenu.AddItem(cmds[i]);
+            m_pToolbarMenu.SetHook(m_pMapC2);
+        }
+        private void axTOCControl_main_OnMouseDown(object sender, ITOCControlEvents_OnMouseDownEvent e)
+        {
+            IBasicMap map = new MapClass();
+            ILayer layer = new FeatureLayerClass();
+            object index = new object();
+            object other = new object();
+            esriTOCControlItem item = new esriTOCControlItem();
+            axTOCControl_main.HitTest(e.x, e.y, ref item, ref map, ref layer, ref other, ref index);
+            if (e.button == 2 && item == esriTOCControlItem.esriTOCControlItemLayer)
+            { 
+                (m_pMapC2 as IMapControl4).CustomProperty = layer;
+                m_pToolbarMenu.PopupMenu(e.x, e.y, axTOCControl_main.hWnd);
+            }
+        } 
+        #endregion
+
+        private void gitHubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((ToolStripMenuItem)sender == gitHubToolStripMenuItem)
+            {
+                System.Diagnostics.Process.Start("https://github.com/Ngheizit/GIS-with-SQL");
+                return;
+            }
+            if ((ToolStripMenuItem)sender == websiteToolStripMenuItem)
+            {
+                System.Diagnostics.Process.Start("https://ngheizit.fun");
+                return;
+            }
+        }
+
+
+
+
 
 
 

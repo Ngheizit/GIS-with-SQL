@@ -48,11 +48,13 @@
             this.开始ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开地图文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.其他ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.查看其他用户信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.用户通信平台ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.axTOCControl_main = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.label_showLocation = new System.Windows.Forms.ToolStripStatusLabel();
-            this.用户通信平台ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.制作者信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gitHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -234,11 +236,13 @@
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.开始ToolStripMenuItem,
             this.其他ToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
+            this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip.Size = new System.Drawing.Size(1014, 25);
             this.menuStrip.TabIndex = 3;
             this.menuStrip.Text = "menuStrip1";
@@ -261,18 +265,19 @@
             // 其他ToolStripMenuItem
             // 
             this.其他ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.查看其他用户信息ToolStripMenuItem,
-            this.用户通信平台ToolStripMenuItem});
+            this.用户通信平台ToolStripMenuItem,
+            this.制作者信息ToolStripMenuItem});
             this.其他ToolStripMenuItem.Name = "其他ToolStripMenuItem";
             this.其他ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.其他ToolStripMenuItem.Text = "其他";
+            this.其他ToolStripMenuItem.Click += new System.EventHandler(this.其他ToolStripMenuItem_Click);
             // 
-            // 查看其他用户信息ToolStripMenuItem
+            // 用户通信平台ToolStripMenuItem
             // 
-            this.查看其他用户信息ToolStripMenuItem.Name = "查看其他用户信息ToolStripMenuItem";
-            this.查看其他用户信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.查看其他用户信息ToolStripMenuItem.Text = "查看其他用户信息";
-            this.查看其他用户信息ToolStripMenuItem.Click += new System.EventHandler(this.查看其他用户信息ToolStripMenuItem_Click);
+            this.用户通信平台ToolStripMenuItem.Name = "用户通信平台ToolStripMenuItem";
+            this.用户通信平台ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.用户通信平台ToolStripMenuItem.Text = "用户通信平台";
+            this.用户通信平台ToolStripMenuItem.Click += new System.EventHandler(this.用户通信平台ToolStripMenuItem_Click);
             // 
             // axTOCControl_main
             // 
@@ -283,6 +288,7 @@
             this.axTOCControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTOCControl_main.OcxState")));
             this.axTOCControl_main.Size = new System.Drawing.Size(228, 430);
             this.axTOCControl_main.TabIndex = 4;
+            this.axTOCControl_main.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl_main_OnMouseDown);
             // 
             // statusStrip
             // 
@@ -300,12 +306,28 @@
             this.label_showLocation.Size = new System.Drawing.Size(16, 17);
             this.label_showLocation.Text = "  ";
             // 
-            // 用户通信平台ToolStripMenuItem
+            // 制作者信息ToolStripMenuItem
             // 
-            this.用户通信平台ToolStripMenuItem.Name = "用户通信平台ToolStripMenuItem";
-            this.用户通信平台ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.用户通信平台ToolStripMenuItem.Text = "用户通信平台";
-            this.用户通信平台ToolStripMenuItem.Click += new System.EventHandler(this.用户通信平台ToolStripMenuItem_Click);
+            this.制作者信息ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gitHubToolStripMenuItem,
+            this.websiteToolStripMenuItem});
+            this.制作者信息ToolStripMenuItem.Name = "制作者信息ToolStripMenuItem";
+            this.制作者信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.制作者信息ToolStripMenuItem.Text = "制作者信息";
+            // 
+            // gitHubToolStripMenuItem
+            // 
+            this.gitHubToolStripMenuItem.Name = "gitHubToolStripMenuItem";
+            this.gitHubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gitHubToolStripMenuItem.Text = "GitHub";
+            this.gitHubToolStripMenuItem.Click += new System.EventHandler(this.gitHubToolStripMenuItem_Click);
+            // 
+            // websiteToolStripMenuItem
+            // 
+            this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.websiteToolStripMenuItem.Text = "Website";
+            this.websiteToolStripMenuItem.Click += new System.EventHandler(this.gitHubToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -322,6 +344,7 @@
             this.Name = "FormMain";
             this.Text = "主窗体";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
@@ -363,10 +386,12 @@
         private System.Windows.Forms.ToolStripMenuItem 打开地图文档ToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel label_showLocation;
         private System.Windows.Forms.ToolStripMenuItem 其他ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 查看其他用户信息ToolStripMenuItem;
         private System.Windows.Forms.Button btn_Hawkeye;
         private ESRI.ArcGIS.Controls.AxMapControl axMapControl_hawkeye;
         private System.Windows.Forms.ToolStripMenuItem 用户通信平台ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 制作者信息ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gitHubToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem websiteToolStripMenuItem;
     }
 }
 
