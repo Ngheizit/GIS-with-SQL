@@ -9,17 +9,36 @@ using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
 
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Display;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
+
 namespace HeizitGIS
 {
     public partial class FormMain : Form
     {
-        public FormMain(string id, string username)
+        private IMapControl2 m_pMapC2;
+        private IMapDocument m_pMapDoc;
+        private string _username;
+        private int _id;
+
+        public FormMain(int id, string username)
         {
             InitializeComponent();
-            tbx_info_ID.Text = id;
+            tbx_info_ID.Text = id.ToString();
             tbx_info_Username.Text = username;
+
+            this._id = id;
+            this._username = username;
+            this.m_pMapC2 = axMapControl_main.GetOcx() as IMapControl2;
+            this.m_pMapDoc = new MapDocumentClass();
         }
 
+
+        #region → 用户操作（修改密码 and 退出登录）
         private void Button_Info_Click(object sender, EventArgs e)
         {
             // 修改密码
@@ -35,7 +54,6 @@ namespace HeizitGIS
                 ReLoign();
             }
         }
-        
         public static void ReLoign()
         {
             Application.ExitThread();
@@ -44,7 +62,7 @@ namespace HeizitGIS
             Thread.Sleep(1);
             thtmp.Start(appName);
         }
-        private static void Run(Object appName)
+        private static void Run(object appName)
         {
             Process ps = new Process
             {
@@ -54,6 +72,187 @@ namespace HeizitGIS
                 }
             };
             ps.Start();
+        } 
+        #endregion
+
+
+        #region → 菜单栏事件集
+        private void 打开地图文档ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofg = new OpenFileDialog() { 
+                Title = "打开地图文档对话框",
+                Filter = "地图文档 (*.mxd)|*.mxd",
+                InitialDirectory = Application.StartupPath
+            };
+            if (ofg.ShowDialog() == DialogResult.OK)
+            {
+                string mxdPath = ofg.FileName;
+                if (m_pMapC2.CheckMxFile(mxdPath))
+                {
+                    m_pMapDoc.Open(mxdPath); // or m_pMapC2.LoadMxFile(mxdPath);
+                    m_pMapC2.Map = m_pMapDoc.Map[0];
+                }
+            }
         }
+        private void 查看其他用户信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sql = String.Format("SELECT [Object-ID], Username FROM Users WHERE Username != '{0}'", this._username);
+            DataTable dt = SQLHelper.GetDataTable(sql);
+            FormTable f_table = new FormTable(dt);
+            f_table.Show();
+        }
+        private void 用户通信平台ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormInfos f_infos = new FormInfos(_id);
+            f_infos.Show();
+        }
+        #endregion
+
+
+        #region → 鼠标响应事件集
+        private void axMapControl_main_OnMouseDown(object sender, IMapControlEvents2_OnMouseDownEvent e)
+        {
+            if (e.button == 4)
+            {
+                m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerPanning;
+                m_pMapC2.Pan();
+                m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerArrow;
+            }
+        }
+        private void axMapControl_main_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
+        {
+            label_showLocation.Text = String.Format("{0}, {1} {2}", 
+                                                    e.mapX.ToString(".###"), 
+                                                    e.mapX.ToString(".###"), 
+                                                    m_pMapC2.MapUnits.ToString().Substring(4));
+        } 
+        #endregion
+
+
+        #region → 数据视图与布局视图同步功能事件集
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0) //  数据视图
+            {
+                axTOCControl_main.SetBuddyControl(axMapControl_main);
+            }
+            else // 布局视图
+            {
+                axTOCControl_main.SetBuddyControl(axPageLayoutControl_main);
+            }
+        }
+        private void axMapControl_main_OnAfterScreenDraw(object sender, IMapControlEvents2_OnAfterScreenDrawEvent e)
+        {
+            // 范围同步
+            IActiveView pActiveView = axPageLayoutControl_main.ActiveView.FocusMap as IActiveView;
+            pActiveView.ScreenDisplay.DisplayTransformation.VisibleBounds = m_pMapC2.Extent;
+            pActiveView.Refresh();
+            // 内容同步
+            IObjectCopy pObjectCopy = new ObjectCopyClass();
+            object pCopyMap = pObjectCopy.Copy(m_pMapC2.Map);
+            object pOverwriteMap = pActiveView;
+            pObjectCopy.Overwrite(pCopyMap, pOverwriteMap);
+        }
+        #endregion
+
+
+        #region → 关闭窗体事件
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("是否保存保存地图文档", "程序准备关闭", MessageBoxButtons.YesNoCancel);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    m_pMapDoc.Save();
+                    e.Cancel = false;
+                }
+                catch
+                {
+                    MessageBox.Show("当前地图文档无法保存", "错误信息");
+                    e.Cancel = true;
+                }
+            }
+            else if (dr == DialogResult.No)
+            {
+                e.Cancel = false;
+            }
+            else if (dr == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        } 
+        #endregion
+
+
+        #region → 鹰眼功能事件集
+        private void btn_Hawkeye_Click(object sender, EventArgs e)
+        {
+            if (btn_Hawkeye.Text == "↙") // 开启鹰眼
+            {
+                axMapControl_hawkeye.Visible = true;
+                btn_Hawkeye.Text = "↗";
+                Hawkeye_AddMap();
+            }
+            else // 关闭鹰眼
+            {
+                axMapControl_hawkeye.Visible = false;
+                btn_Hawkeye.Text = "↙";
+            }
+        }
+        private void Hawkeye_AddMap()
+        {
+            axMapControl_hawkeye.ClearLayers();
+            IMap pMap = m_pMapC2.Map;
+            for (int i = pMap.LayerCount - 1; i >= 0; i--)
+            {
+                axMapControl_hawkeye.AddLayer(pMap.get_Layer(i));
+            }
+            axMapControl_hawkeye.Extent = axMapControl_hawkeye.FullExtent;
+            Hawkeye_DrawExtent(m_pMapC2.Extent);
+        }
+        private void Hawkeye_DrawExtent(IEnvelope envelope)
+        {
+            IGraphicsContainer pGC = axMapControl_hawkeye.Map as IGraphicsContainer;
+            pGC.DeleteAllElements();
+            IElement pElement = new RectangleElementClass()
+            {
+                Geometry = envelope,
+                Symbol = AeUtils.CreateSimpleFillSymbol(
+                    AeUtils.CreateRgbColor(), // 填充颜色 - 透明
+                    AeUtils.CreateRgbColor(255, 0, 0), // 边框颜色 - 红色
+                    2 // 边框大小
+                )
+            };
+            pGC.AddElement(pElement, 0);
+            axMapControl_hawkeye.Refresh(esriViewDrawPhase.esriViewGraphics, null, null);
+        }
+        private void axMapControl_main_OnExtentUpdated(object sender, IMapControlEvents2_OnExtentUpdatedEvent e)
+        {
+            if (axMapControl_hawkeye.Visible)
+            {
+                Hawkeye_DrawExtent(e.newEnvelope as IEnvelope);
+            }
+        }
+        private void axMapControl_hawkeye_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
+        {
+            if (e.button == 1)
+            {
+                m_pMapC2.CenterAt(new PointClass() {
+                    X = e.mapX,
+                    Y = e.mapY
+                });
+            }
+            else if (e.button == 2)
+            {
+                IEnvelope pEnv = axMapControl_hawkeye.TrackRectangle();
+                m_pMapC2.Extent = pEnv;
+            }
+        }
+        #endregion
+
+
+
+        
     }
 }

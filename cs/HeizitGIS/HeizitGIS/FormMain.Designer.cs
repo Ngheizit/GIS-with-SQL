@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_UpdatePassword = new System.Windows.Forms.Button();
@@ -35,7 +36,34 @@
             this.tbx_info_ID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btn_Hawkeye = new System.Windows.Forms.Button();
+            this.axMapControl_hawkeye = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.axMapControl_main = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.axPageLayoutControl_main = new ESRI.ArcGIS.Controls.AxPageLayoutControl();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.开始ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开地图文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.其他ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.查看其他用户信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.axTOCControl_main = new ESRI.ArcGIS.Controls.AxTOCControl();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.label_showLocation = new System.Windows.Forms.ToolStripStatusLabel();
+            this.用户通信平台ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl_hawkeye)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl_main)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axPageLayoutControl_main)).BeginInit();
+            this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTOCControl_main)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -46,16 +74,16 @@
             this.groupBox1.Controls.Add(this.tbx_info_ID);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(9, 5);
+            this.groupBox1.Location = new System.Drawing.Point(4, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(167, 106);
+            this.groupBox1.Size = new System.Drawing.Size(216, 106);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "个人信息";
             // 
             // btn_exit
             // 
-            this.btn_exit.Location = new System.Drawing.Point(86, 72);
+            this.btn_exit.Location = new System.Drawing.Point(111, 72);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(75, 23);
             this.btn_exit.TabIndex = 2;
@@ -65,7 +93,7 @@
             // 
             // btn_UpdatePassword
             // 
-            this.btn_UpdatePassword.Location = new System.Drawing.Point(9, 72);
+            this.btn_UpdatePassword.Location = new System.Drawing.Point(19, 72);
             this.btn_UpdatePassword.Name = "btn_UpdatePassword";
             this.btn_UpdatePassword.Size = new System.Drawing.Size(75, 23);
             this.btn_UpdatePassword.TabIndex = 2;
@@ -78,7 +106,7 @@
             this.tbx_info_Username.Location = new System.Drawing.Point(66, 45);
             this.tbx_info_Username.Name = "tbx_info_Username";
             this.tbx_info_Username.ReadOnly = true;
-            this.tbx_info_Username.Size = new System.Drawing.Size(88, 21);
+            this.tbx_info_Username.Size = new System.Drawing.Size(132, 21);
             this.tbx_info_Username.TabIndex = 1;
             // 
             // tbx_info_ID
@@ -86,7 +114,7 @@
             this.tbx_info_ID.Location = new System.Drawing.Point(66, 18);
             this.tbx_info_ID.Name = "tbx_info_ID";
             this.tbx_info_ID.ReadOnly = true;
-            this.tbx_info_ID.Size = new System.Drawing.Size(88, 21);
+            this.tbx_info_ID.Size = new System.Drawing.Size(132, 21);
             this.tbx_info_ID.TabIndex = 1;
             // 
             // label2
@@ -107,17 +135,209 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID：";
             // 
+            // axLicenseControl1
+            // 
+            this.axLicenseControl1.Enabled = true;
+            this.axLicenseControl1.Location = new System.Drawing.Point(346, 384);
+            this.axLicenseControl1.Name = "axLicenseControl1";
+            this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
+            this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
+            this.axLicenseControl1.TabIndex = 1;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(234, 29);
+            this.tabControl1.Multiline = true;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(778, 540);
+            this.tabControl1.TabIndex = 2;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btn_Hawkeye);
+            this.tabPage1.Controls.Add(this.axMapControl_hawkeye);
+            this.tabPage1.Controls.Add(this.axMapControl_main);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(770, 514);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "数据视图";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btn_Hawkeye
+            // 
+            this.btn_Hawkeye.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Hawkeye.Location = new System.Drawing.Point(747, 1);
+            this.btn_Hawkeye.Name = "btn_Hawkeye";
+            this.btn_Hawkeye.Size = new System.Drawing.Size(22, 22);
+            this.btn_Hawkeye.TabIndex = 1;
+            this.btn_Hawkeye.Text = "↙";
+            this.btn_Hawkeye.UseVisualStyleBackColor = true;
+            this.btn_Hawkeye.Click += new System.EventHandler(this.btn_Hawkeye_Click);
+            // 
+            // axMapControl_hawkeye
+            // 
+            this.axMapControl_hawkeye.Location = new System.Drawing.Point(525, 0);
+            this.axMapControl_hawkeye.Name = "axMapControl_hawkeye";
+            this.axMapControl_hawkeye.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl_hawkeye.OcxState")));
+            this.axMapControl_hawkeye.Size = new System.Drawing.Size(245, 129);
+            this.axMapControl_hawkeye.TabIndex = 2;
+            this.axMapControl_hawkeye.Visible = false;
+            this.axMapControl_hawkeye.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl_hawkeye_OnMouseMove);
+            // 
+            // axMapControl_main
+            // 
+            this.axMapControl_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.axMapControl_main.Location = new System.Drawing.Point(-1, -3);
+            this.axMapControl_main.Name = "axMapControl_main";
+            this.axMapControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl_main.OcxState")));
+            this.axMapControl_main.Size = new System.Drawing.Size(775, 518);
+            this.axMapControl_main.TabIndex = 0;
+            this.axMapControl_main.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl_main_OnMouseDown);
+            this.axMapControl_main.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl_main_OnMouseMove);
+            this.axMapControl_main.OnAfterScreenDraw += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnAfterScreenDrawEventHandler(this.axMapControl_main_OnAfterScreenDraw);
+            this.axMapControl_main.OnExtentUpdated += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnExtentUpdatedEventHandler(this.axMapControl_main_OnExtentUpdated);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.axPageLayoutControl_main);
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(770, 514);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "布局视图";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // axPageLayoutControl_main
+            // 
+            this.axPageLayoutControl_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.axPageLayoutControl_main.Location = new System.Drawing.Point(-2, -1);
+            this.axPageLayoutControl_main.Name = "axPageLayoutControl_main";
+            this.axPageLayoutControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPageLayoutControl_main.OcxState")));
+            this.axPageLayoutControl_main.Size = new System.Drawing.Size(776, 516);
+            this.axPageLayoutControl_main.TabIndex = 0;
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.开始ToolStripMenuItem,
+            this.其他ToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1014, 25);
+            this.menuStrip.TabIndex = 3;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // 开始ToolStripMenuItem
+            // 
+            this.开始ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开地图文档ToolStripMenuItem});
+            this.开始ToolStripMenuItem.Name = "开始ToolStripMenuItem";
+            this.开始ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.开始ToolStripMenuItem.Text = "开始";
+            // 
+            // 打开地图文档ToolStripMenuItem
+            // 
+            this.打开地图文档ToolStripMenuItem.Name = "打开地图文档ToolStripMenuItem";
+            this.打开地图文档ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.打开地图文档ToolStripMenuItem.Text = "打开地图文档";
+            this.打开地图文档ToolStripMenuItem.Click += new System.EventHandler(this.打开地图文档ToolStripMenuItem_Click);
+            // 
+            // 其他ToolStripMenuItem
+            // 
+            this.其他ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.查看其他用户信息ToolStripMenuItem,
+            this.用户通信平台ToolStripMenuItem});
+            this.其他ToolStripMenuItem.Name = "其他ToolStripMenuItem";
+            this.其他ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.其他ToolStripMenuItem.Text = "其他";
+            // 
+            // 查看其他用户信息ToolStripMenuItem
+            // 
+            this.查看其他用户信息ToolStripMenuItem.Name = "查看其他用户信息ToolStripMenuItem";
+            this.查看其他用户信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.查看其他用户信息ToolStripMenuItem.Text = "查看其他用户信息";
+            this.查看其他用户信息ToolStripMenuItem.Click += new System.EventHandler(this.查看其他用户信息ToolStripMenuItem_Click);
+            // 
+            // axTOCControl_main
+            // 
+            this.axTOCControl_main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.axTOCControl_main.Location = new System.Drawing.Point(0, 139);
+            this.axTOCControl_main.Name = "axTOCControl_main";
+            this.axTOCControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTOCControl_main.OcxState")));
+            this.axTOCControl_main.Size = new System.Drawing.Size(228, 430);
+            this.axTOCControl_main.TabIndex = 4;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.label_showLocation});
+            this.statusStrip.Location = new System.Drawing.Point(0, 577);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1014, 22);
+            this.statusStrip.TabIndex = 5;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // label_showLocation
+            // 
+            this.label_showLocation.Name = "label_showLocation";
+            this.label_showLocation.Size = new System.Drawing.Size(16, 17);
+            this.label_showLocation.Text = "  ";
+            // 
+            // 用户通信平台ToolStripMenuItem
+            // 
+            this.用户通信平台ToolStripMenuItem.Name = "用户通信平台ToolStripMenuItem";
+            this.用户通信平台ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.用户通信平台ToolStripMenuItem.Text = "用户通信平台";
+            this.用户通信平台ToolStripMenuItem.Click += new System.EventHandler(this.用户通信平台ToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 417);
+            this.ClientSize = new System.Drawing.Size(1014, 599);
+            this.Controls.Add(this.axTOCControl_main);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.axLicenseControl1);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
             this.Text = "主窗体";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl_hawkeye)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl_main)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axPageLayoutControl_main)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axTOCControl_main)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -130,6 +350,23 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_UpdatePassword;
         private System.Windows.Forms.Button btn_exit;
+        private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem 开始ToolStripMenuItem;
+        private ESRI.ArcGIS.Controls.AxMapControl axMapControl_main;
+        private ESRI.ArcGIS.Controls.AxPageLayoutControl axPageLayoutControl_main;
+        private ESRI.ArcGIS.Controls.AxTOCControl axTOCControl_main;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripMenuItem 打开地图文档ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel label_showLocation;
+        private System.Windows.Forms.ToolStripMenuItem 其他ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 查看其他用户信息ToolStripMenuItem;
+        private System.Windows.Forms.Button btn_Hawkeye;
+        private ESRI.ArcGIS.Controls.AxMapControl axMapControl_hawkeye;
+        private System.Windows.Forms.ToolStripMenuItem 用户通信平台ToolStripMenuItem;
     }
 }
 

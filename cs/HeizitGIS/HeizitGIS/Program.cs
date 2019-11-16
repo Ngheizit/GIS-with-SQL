@@ -14,13 +14,15 @@ namespace HeizitGIS
         [STAThread]
         static void Main()
         {
+            ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.Desktop);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             FormSignIn form_signIn = new FormSignIn();
             if (form_signIn.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FormMain(form_signIn.ID, form_signIn.Username));
+                Application.Run(new FormMain(Convert.ToInt32(form_signIn.ID), form_signIn.Username));
             }
         }
     }
