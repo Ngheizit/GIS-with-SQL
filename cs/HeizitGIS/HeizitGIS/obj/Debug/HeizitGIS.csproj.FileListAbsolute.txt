@@ -12,3 +12,4 @@ D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormSignUp.re
 D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormReset.resources
 D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormTable.resources
 D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.FormInfos.resources
+D:\gitproj\gis2sql\this\cs\HeizitGIS\HeizitGIS\obj\Debug\HeizitGIS.AeForm.FormLabel.resources

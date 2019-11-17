@@ -49,12 +49,15 @@
             this.打开地图文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.其他ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户通信平台ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.axTOCControl_main = new ESRI.ArcGIS.Controls.AxTOCControl();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.label_showLocation = new System.Windows.Forms.ToolStripStatusLabel();
             this.制作者信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.axTOCControl_main = new ESRI.ArcGIS.Controls.AxTOCControl();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.label_showLocation = new System.Windows.Forms.ToolStripStatusLabel();
+            this.axToolbarControl_dataview = new ESRI.ArcGIS.Controls.AxToolbarControl();
+            this.axToolbarControl_layoutview = new ESRI.ArcGIS.Controls.AxToolbarControl();
+            this.保存地图文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -66,6 +69,8 @@
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTOCControl_main)).BeginInit();
             this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axToolbarControl_dataview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axToolbarControl_layoutview)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -154,11 +159,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(234, 29);
+            this.tabControl1.Location = new System.Drawing.Point(234, 63);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(778, 540);
+            this.tabControl1.Size = new System.Drawing.Size(778, 560);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -170,7 +175,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(770, 514);
+            this.tabPage1.Size = new System.Drawing.Size(770, 534);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "数据视图";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -204,7 +209,7 @@
             this.axMapControl_main.Location = new System.Drawing.Point(-1, -3);
             this.axMapControl_main.Name = "axMapControl_main";
             this.axMapControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl_main.OcxState")));
-            this.axMapControl_main.Size = new System.Drawing.Size(775, 518);
+            this.axMapControl_main.Size = new System.Drawing.Size(775, 538);
             this.axMapControl_main.TabIndex = 0;
             this.axMapControl_main.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl_main_OnMouseDown);
             this.axMapControl_main.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl_main_OnMouseMove);
@@ -217,7 +222,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(770, 514);
+            this.tabPage2.Size = new System.Drawing.Size(770, 534);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "布局视图";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -230,8 +235,9 @@
             this.axPageLayoutControl_main.Location = new System.Drawing.Point(-2, -1);
             this.axPageLayoutControl_main.Name = "axPageLayoutControl_main";
             this.axPageLayoutControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPageLayoutControl_main.OcxState")));
-            this.axPageLayoutControl_main.Size = new System.Drawing.Size(776, 516);
+            this.axPageLayoutControl_main.Size = new System.Drawing.Size(776, 536);
             this.axPageLayoutControl_main.TabIndex = 0;
+            this.axPageLayoutControl_main.OnMouseDown += new ESRI.ArcGIS.Controls.IPageLayoutControlEvents_Ax_OnMouseDownEventHandler(this.axPageLayoutControl_main_OnMouseDown);
             // 
             // menuStrip
             // 
@@ -250,7 +256,8 @@
             // 开始ToolStripMenuItem
             // 
             this.开始ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开地图文档ToolStripMenuItem});
+            this.打开地图文档ToolStripMenuItem,
+            this.保存地图文档ToolStripMenuItem});
             this.开始ToolStripMenuItem.Name = "开始ToolStripMenuItem";
             this.开始ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.开始ToolStripMenuItem.Text = "开始";
@@ -258,7 +265,7 @@
             // 打开地图文档ToolStripMenuItem
             // 
             this.打开地图文档ToolStripMenuItem.Name = "打开地图文档ToolStripMenuItem";
-            this.打开地图文档ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.打开地图文档ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.打开地图文档ToolStripMenuItem.Text = "打开地图文档";
             this.打开地图文档ToolStripMenuItem.Click += new System.EventHandler(this.打开地图文档ToolStripMenuItem_Click);
             // 
@@ -275,36 +282,9 @@
             // 用户通信平台ToolStripMenuItem
             // 
             this.用户通信平台ToolStripMenuItem.Name = "用户通信平台ToolStripMenuItem";
-            this.用户通信平台ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.用户通信平台ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.用户通信平台ToolStripMenuItem.Text = "用户通信平台";
             this.用户通信平台ToolStripMenuItem.Click += new System.EventHandler(this.用户通信平台ToolStripMenuItem_Click);
-            // 
-            // axTOCControl_main
-            // 
-            this.axTOCControl_main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.axTOCControl_main.Location = new System.Drawing.Point(0, 139);
-            this.axTOCControl_main.Name = "axTOCControl_main";
-            this.axTOCControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTOCControl_main.OcxState")));
-            this.axTOCControl_main.Size = new System.Drawing.Size(228, 430);
-            this.axTOCControl_main.TabIndex = 4;
-            this.axTOCControl_main.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl_main_OnMouseDown);
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.label_showLocation});
-            this.statusStrip.Location = new System.Drawing.Point(0, 577);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1014, 22);
-            this.statusStrip.TabIndex = 5;
-            this.statusStrip.Text = "statusStrip1";
-            // 
-            // label_showLocation
-            // 
-            this.label_showLocation.Name = "label_showLocation";
-            this.label_showLocation.Size = new System.Drawing.Size(16, 17);
-            this.label_showLocation.Text = "  ";
             // 
             // 制作者信息ToolStripMenuItem
             // 
@@ -329,11 +309,63 @@
             this.websiteToolStripMenuItem.Text = "Website";
             this.websiteToolStripMenuItem.Click += new System.EventHandler(this.gitHubToolStripMenuItem_Click);
             // 
+            // axTOCControl_main
+            // 
+            this.axTOCControl_main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.axTOCControl_main.Location = new System.Drawing.Point(0, 139);
+            this.axTOCControl_main.Name = "axTOCControl_main";
+            this.axTOCControl_main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTOCControl_main.OcxState")));
+            this.axTOCControl_main.Size = new System.Drawing.Size(228, 484);
+            this.axTOCControl_main.TabIndex = 4;
+            this.axTOCControl_main.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl_main_OnMouseDown);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.label_showLocation});
+            this.statusStrip.Location = new System.Drawing.Point(0, 631);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1014, 22);
+            this.statusStrip.TabIndex = 5;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // label_showLocation
+            // 
+            this.label_showLocation.Name = "label_showLocation";
+            this.label_showLocation.Size = new System.Drawing.Size(16, 17);
+            this.label_showLocation.Text = "  ";
+            // 
+            // axToolbarControl_dataview
+            // 
+            this.axToolbarControl_dataview.Location = new System.Drawing.Point(234, 30);
+            this.axToolbarControl_dataview.Name = "axToolbarControl_dataview";
+            this.axToolbarControl_dataview.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axToolbarControl_dataview.OcxState")));
+            this.axToolbarControl_dataview.Size = new System.Drawing.Size(374, 28);
+            this.axToolbarControl_dataview.TabIndex = 6;
+            // 
+            // axToolbarControl_layoutview
+            // 
+            this.axToolbarControl_layoutview.Location = new System.Drawing.Point(614, 30);
+            this.axToolbarControl_layoutview.Name = "axToolbarControl_layoutview";
+            this.axToolbarControl_layoutview.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axToolbarControl_layoutview.OcxState")));
+            this.axToolbarControl_layoutview.Size = new System.Drawing.Size(388, 28);
+            this.axToolbarControl_layoutview.TabIndex = 6;
+            // 
+            // 保存地图文档ToolStripMenuItem
+            // 
+            this.保存地图文档ToolStripMenuItem.Name = "保存地图文档ToolStripMenuItem";
+            this.保存地图文档ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存地图文档ToolStripMenuItem.Text = "保存地图文档";
+            this.保存地图文档ToolStripMenuItem.Click += new System.EventHandler(this.保存地图文档ToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 599);
+            this.ClientSize = new System.Drawing.Size(1014, 653);
+            this.Controls.Add(this.axToolbarControl_layoutview);
+            this.Controls.Add(this.axToolbarControl_dataview);
             this.Controls.Add(this.axTOCControl_main);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.groupBox1);
@@ -359,6 +391,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.axTOCControl_main)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axToolbarControl_dataview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axToolbarControl_layoutview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,6 +426,9 @@
         private System.Windows.Forms.ToolStripMenuItem 制作者信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gitHubToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem websiteToolStripMenuItem;
+        private ESRI.ArcGIS.Controls.AxToolbarControl axToolbarControl_dataview;
+        private ESRI.ArcGIS.Controls.AxToolbarControl axToolbarControl_layoutview;
+        private System.Windows.Forms.ToolStripMenuItem 保存地图文档ToolStripMenuItem;
     }
 }
 

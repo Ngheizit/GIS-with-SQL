@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Configuration;
 
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Controls;
@@ -33,6 +34,7 @@ namespace HeizitGIS
             tbx_info_ID.Text = id.ToString();
             tbx_info_Username.Text = username;
 
+            this.Text = ConfigurationManager.AppSettings["Title"];
             this._id = id;
             this._username = username;
             this.m_pMapC2 = axMapControl_main.GetOcx() as IMapControl2;
@@ -43,6 +45,8 @@ namespace HeizitGIS
         private void FormMain_Load(object sender, EventArgs e)
         {
             InitTOCControl();
+            AeUtils.SetMapControl(m_pMapC2);
+            AeUtils.SetTOCControl(axTOCControl_main);
         }
 
 
@@ -114,6 +118,30 @@ namespace HeizitGIS
             int count = dt.Rows.Count;
             用户通信平台ToolStripMenuItem.Text = String.Format("用户通信平台(未处理信息: {0}条)", count);
         }
+        private void gitHubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((ToolStripMenuItem)sender == gitHubToolStripMenuItem)
+            {
+                System.Diagnostics.Process.Start("https://github.com/Ngheizit/GIS-with-SQL");
+                return;
+            }
+            if ((ToolStripMenuItem)sender == websiteToolStripMenuItem)
+            {
+                System.Diagnostics.Process.Start("https://ngheizit.fun");
+                return;
+            }
+        }
+        private void 保存地图文档ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                m_pMapDoc.Save();
+            }
+            catch
+            {
+                MessageBox.Show("当前地图文档无法保存", "错误信息");
+            }
+        }
         #endregion
 
 
@@ -133,7 +161,16 @@ namespace HeizitGIS
                                                     e.mapX.ToString(".###"), 
                                                     e.mapX.ToString(".###"), 
                                                     m_pMapC2.MapUnits.ToString().Substring(4));
-        } 
+        }
+        private void axPageLayoutControl_main_OnMouseDown(object sender, IPageLayoutControlEvents_OnMouseDownEvent e)
+        {
+            if (e.button == 4)
+            {
+                axPageLayoutControl_main.MousePointer = esriControlsMousePointer.esriPointerPanning;
+                axPageLayoutControl_main.Pan();
+                axPageLayoutControl_main.MousePointer = esriControlsMousePointer.esriPointerArrow;
+            }
+        }
         #endregion
 
 
@@ -143,10 +180,14 @@ namespace HeizitGIS
             if (tabControl1.SelectedIndex == 0) //  数据视图
             {
                 axTOCControl_main.SetBuddyControl(axMapControl_main);
+                axToolbarControl_dataview.SetBuddyControl(axMapControl_main);
+                axToolbarControl_layoutview.SetBuddyControl(axMapControl_main);
             }
             else // 布局视图
             {
                 axTOCControl_main.SetBuddyControl(axPageLayoutControl_main);
+                axToolbarControl_dataview.SetBuddyControl(axPageLayoutControl_main);
+                axToolbarControl_layoutview.SetBuddyControl(axPageLayoutControl_main);
             }
         }
         private void axMapControl_main_OnAfterScreenDraw(object sender, IMapControlEvents2_OnAfterScreenDrawEvent e)
@@ -259,12 +300,15 @@ namespace HeizitGIS
         }
         #endregion
 
+
         #region → TOCC控件HitTest()事件
         private void InitTOCControl()
         {
             object[] cmds = new object[] { 
                 new AeCmd.ShowAttributeTable(),
-                new AeCmd.ZoomToLayer()
+                new AeCmd.ZoomToLayer(),
+                new AeCmd.Label(),
+                new AeCmd.SingleSymbology()
             };
             m_pToolbarMenu = new ToolbarMenu();
             for (int i = 0; i < cmds.Length; i++)
@@ -282,24 +326,18 @@ namespace HeizitGIS
             if (e.button == 2 && item == esriTOCControlItem.esriTOCControlItemLayer)
             { 
                 (m_pMapC2 as IMapControl4).CustomProperty = layer;
+                if (layer as IFeatureLayer == null)
+                    return;
                 m_pToolbarMenu.PopupMenu(e.x, e.y, axTOCControl_main.hWnd);
             }
         } 
         #endregion
 
-        private void gitHubToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if ((ToolStripMenuItem)sender == gitHubToolStripMenuItem)
-            {
-                System.Diagnostics.Process.Start("https://github.com/Ngheizit/GIS-with-SQL");
-                return;
-            }
-            if ((ToolStripMenuItem)sender == websiteToolStripMenuItem)
-            {
-                System.Diagnostics.Process.Start("https://ngheizit.fun");
-                return;
-            }
-        }
+
+
+
+
+
 
 
 

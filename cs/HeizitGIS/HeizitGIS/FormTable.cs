@@ -45,6 +45,7 @@ namespace HeizitGIS
             listView1.HeaderStyle = ColumnHeaderStyle.Clickable;
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
+            listView1.MultiSelect = true;
 
             if (this.m_dataTable != null)
             {
@@ -103,6 +104,32 @@ namespace HeizitGIS
                 listView1.Items.Add(item);
                 pFeature = pFeatureCursor.NextFeature();
             }
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            MessageBox.Show(e.Column.ToString());
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            AeUtils.ZoomToSelect(m_pFeatureLayer);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int len = listView1.SelectedItems.Count;
+            int[] fids = new int[len];
+            for (int i = 0; i < len; i++)
+            {
+                fids[i] = listView1.SelectedIndices[i];
+            }
+            AeUtils.SelectFeaturesFromFIDs(m_pFeatureLayer, fids);
+        }
+
+        private void 缩放至选择集ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AeUtils.ZoomToSelect(m_pFeatureLayer);
         }
 
     }
