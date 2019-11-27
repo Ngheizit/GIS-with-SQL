@@ -1,0 +1,13 @@
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\bin\Debug\XizheGIS.exe
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\bin\Debug\XizheGIS.pdb
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.csprojResolveAssemblyReference.cache
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.FormMain.resources
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.MyForm.FSignIn.resources
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.Properties.Resources.resources
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.csproj.GenerateResource.Cache
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.exe.licenses
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.exe
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.pdb
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\bin\Debug\XizheGIS.exe.config
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.MyForm.FSignUp.resources
+D:\gitproj\gis2sql\this\cs\XizheGIS\XizheGIS\obj\Debug\XizheGIS.MyForm.FReset.resources
