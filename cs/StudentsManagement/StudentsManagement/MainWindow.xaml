@@ -1,0 +1,53 @@
+﻿<dx:ThemedWindow xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" x:Class="StudentsManagement.MainWindow"
+        Title="MainWindow" Height="657.638" Width="788" Loaded="ThemedWindow_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <dxr:RibbonControl Grid.Row="0" RibbonStyle="Office2010">
+            <dxr:RibbonControl.ToolbarItems>
+                <dxb:BarButtonItemLink BarItemName="newItem"/>
+            </dxr:RibbonControl.ToolbarItems>
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Caption="开 始">
+                    <dxr:RibbonPageGroup Caption="地图文档管理">
+                        <dxb:BarButtonItem x:Name="btn_Save" Content="保存" Glyph="{dx:DXImage Image=Save_32x32.png}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" ItemClick="btn_Save_Click"/>
+                        <dxb:BarButtonItem x:Name="btn_SaveAs" Content="另存为" LargeGlyph="{dx:DXImage Image=SaveAs_32x32.png}"/>
+                        <dxb:BarButtonItem x:Name="btn_Exit" Content="退出" Glyph="{dx:DXImage Image=Close_32x32.png}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}"/>
+                    </dxr:RibbonPageGroup>
+                    <dxr:RibbonPageGroup Caption="导航">
+                        <dxb:BarButtonItem x:Name="btn_FullExtent" Content="全图显示" Glyph="{dx:DXImage Image=BOLocalization_32x32.png}" LargeGlyph="{dx:DXImage Image=BOLocalization_32x32.png}" ItemClick="btn_FullExtent_Click"/>
+                        <dxb:BarButtonItem Content="放大" Glyph="{dx:DXImage Image=ZoomIn_32x32.png}" LargeGlyph="{dx:DXImage Image=ZoomIn_32x32.png}"/>
+                        <dxb:BarButtonItem Content="缩小" Glyph="{dx:DXImage Image=ZoomOut_32x32.png}" LargeGlyph="{dx:DXImage Image=ZoomOut_32x32.png}"/>
+                        <dxb:BarButtonItem Content="比例放大" Glyph="{dx:DXImageGrayscale Image=ZoomIn_16x16.png}" ItemClick="btn_ZoomIn_Click">
+                        </dxb:BarButtonItem>
+                        <dxb:BarButtonItem Content="比例缩小" Glyph="{dx:DXImageGrayscale Image=ZoomOut_16x16.png}" ItemClick="btn_ZoomOut_Click">
+                        </dxb:BarButtonItem>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+                <dxr:RibbonPage Caption="学生管理"/>
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+        <dxr:RibbonStatusBarControl Grid.Row="2">
+            <dxr:RibbonStatusBarControl.LeftItems>
+                <dxb:BarEditItem x:Name="tbx_LocationInfo" Content=""></dxb:BarEditItem>
+                <dxb:BarEditItem x:Name="tbx_MapScaleInfo" Content=""></dxb:BarEditItem>
+            </dxr:RibbonStatusBarControl.LeftItems>
+        </dxr:RibbonStatusBarControl>
+        <i:WindowsFormsHost x:Name="mapHost" Grid.Row="1" Margin="0,0,194,0"/>
+        <DataGrid Grid.Row="1" HorizontalAlignment="Right" Width="194"/>
+
+
+    </Grid>
+</dx:ThemedWindow>

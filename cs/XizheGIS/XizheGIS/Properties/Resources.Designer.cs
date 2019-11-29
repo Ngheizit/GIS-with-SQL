@@ -73,6 +73,16 @@ namespace XizheGIS.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap bolocalization_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("bolocalization_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap close_32x32 {
             get {
                 object obj = ResourceManager.GetObject("close_32x32", resourceCulture);
@@ -116,6 +126,16 @@ namespace XizheGIS.Properties {
         internal static System.Drawing.Bitmap infomation {
             get {
                 object obj = ResourceManager.GetObject("infomation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap lineitem_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("lineitem_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

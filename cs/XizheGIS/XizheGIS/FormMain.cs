@@ -13,6 +13,8 @@ using ESRI.ArcGIS.Display;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
+using DevExpress.Utils;
+using System.Threading;
 
 namespace XizheGIS
 {
@@ -87,6 +89,10 @@ namespace XizheGIS
                     MessageBox.Show("地图文档另存为成功");
             }
         }
+        private void btn_FullExtent_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            m_pMapC2.Extent = m_pMapC2.FullExtent;
+        }
         #endregion        
         #region → 后台页按钮事件集
         private void btn_Exit_ItemClick(object sender, DevExpress.XtraBars.Ribbon.BackstageViewItemEventArgs e)
@@ -160,14 +166,19 @@ namespace XizheGIS
             };
             if (ofg.ShowDialog() == DialogResult.OK)
             {
-                tbx_PythonExe.Text = ofg.FileName;
+                tbx_PyFile.Text = ofg.FileName;
             }
         }
 
         private void btn_RunPy_Click(object sender, EventArgs e)
         {
+            splashScreenManager1.ShowWaitForm();
 
+            MyUtils.Py.RunPy(tbx_PyFile.Text, tbx_PythonExe.Text);
+
+            splashScreenManager1.CloseWaitForm();
         }
+
 
 
 

@@ -68,6 +68,9 @@
             this.axPageLayoutControl_Main = new ESRI.ArcGIS.Controls.AxPageLayoutControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.axTOCControl1 = new ESRI.ArcGIS.Controls.AxTOCControl();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::XizheGIS.WaitForm1), true, true);
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btn_FullExtent = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -99,9 +102,10 @@
             this.btn_SaveMxd,
             this.btn_SaveAsMxd,
             this.tbx_LocationInfo,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.btn_FullExtent});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -125,7 +129,7 @@
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem4);
             this.backstageViewControl1.Items.Add(this.backstageViewItemSeparator2);
             this.backstageViewControl1.Items.Add(this.btn_Exit);
-            this.backstageViewControl1.Location = new System.Drawing.Point(70, 64);
+            this.backstageViewControl1.Location = new System.Drawing.Point(22, 248);
             this.backstageViewControl1.Name = "backstageViewControl1";
             this.backstageViewControl1.Ribbon = this.ribbonControl1;
             this.backstageViewControl1.SelectedTab = this.backstageViewTabItem1;
@@ -315,6 +319,7 @@
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "三角形范围";
+            this.barButtonItem1.Glyph = global::XizheGIS.Properties.Resources.lineitem_32x32;
             this.barButtonItem1.Id = 11;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -323,7 +328,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup4});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "开始";
             // 
@@ -449,6 +455,25 @@
             this.axTOCControl1.Size = new System.Drawing.Size(247, 554);
             this.axTOCControl1.TabIndex = 0;
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btn_FullExtent);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "地图浏览";
+            // 
+            // btn_FullExtent
+            // 
+            this.btn_FullExtent.Caption = "全图";
+            this.btn_FullExtent.Glyph = global::XizheGIS.Properties.Resources.bolocalization_32x32;
+            this.btn_FullExtent.Id = 12;
+            this.btn_FullExtent.Name = "btn_FullExtent";
+            this.btn_FullExtent.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_FullExtent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_FullExtent_ItemClick);
+            // 
             // FormMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -525,6 +550,9 @@
         private DevExpress.XtraEditors.SimpleButton btn_SelectPyFile;
         private DevExpress.XtraEditors.SimpleButton btn_SelectPythonExe;
         private DevExpress.XtraEditors.SimpleButton btn_RunPy;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem btn_FullExtent;
     }
 }
 
