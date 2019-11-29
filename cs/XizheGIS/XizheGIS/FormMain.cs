@@ -88,7 +88,7 @@ namespace XizheGIS
             }
         }
         #endregion        
-        #region 后台页按钮事件集
+        #region → 后台页按钮事件集
         private void btn_Exit_ItemClick(object sender, DevExpress.XtraBars.Ribbon.BackstageViewItemEventArgs e)
         {
             Application.Exit();
@@ -138,6 +138,36 @@ namespace XizheGIS
                 MyUtils.AE.PagePan();
         }
         #endregion
+
+        private void btn_SelectPythonExe_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofg = new OpenFileDialog() { 
+                Title = "选择python.exe可执行文件",
+                Filter = "可执行文件 (*.exe)|*.exe"
+            };
+            if (ofg.ShowDialog() == DialogResult.OK)
+            {
+                tbx_PythonExe.Text = ofg.FileName;
+            }
+        }
+
+        private void btn_SelectPyFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofg = new OpenFileDialog()
+            {
+                Title = "选择python脚本文件",
+                Filter = "python脚本文件 (*.py)|*.py"
+            };
+            if (ofg.ShowDialog() == DialogResult.OK)
+            {
+                tbx_PythonExe.Text = ofg.FileName;
+            }
+        }
+
+        private void btn_RunPy_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 

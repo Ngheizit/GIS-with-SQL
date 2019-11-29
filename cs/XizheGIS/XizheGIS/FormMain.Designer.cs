@@ -31,8 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
-            this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+            this.btn_RunPy = new DevExpress.XtraEditors.SimpleButton();
+            this.tbx_PyFile = new DevExpress.XtraEditors.TextEdit();
+            this.tbx_PythonExe = new DevExpress.XtraEditors.TextEdit();
+            this.btn_SelectPyFile = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_SelectPythonExe = new DevExpress.XtraEditors.SimpleButton();
+            this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.backstageViewClientControl3 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.backstageViewClientControl4 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
@@ -66,6 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
+            this.backstageViewClientControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbx_PyFile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbx_PythonExe.Properties)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabPage_DataView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl_Main)).BeginInit();
@@ -106,8 +114,8 @@
             // backstageViewControl1
             // 
             this.backstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow;
-            this.backstageViewControl1.Controls.Add(this.backstageViewClientControl2);
             this.backstageViewControl1.Controls.Add(this.backstageViewClientControl1);
+            this.backstageViewControl1.Controls.Add(this.backstageViewClientControl2);
             this.backstageViewControl1.Controls.Add(this.backstageViewClientControl3);
             this.backstageViewControl1.Controls.Add(this.backstageViewClientControl4);
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
@@ -120,10 +128,64 @@
             this.backstageViewControl1.Location = new System.Drawing.Point(70, 64);
             this.backstageViewControl1.Name = "backstageViewControl1";
             this.backstageViewControl1.Ribbon = this.ribbonControl1;
-            this.backstageViewControl1.SelectedTab = this.backstageViewTabItem2;
-            this.backstageViewControl1.SelectedTabIndex = 1;
+            this.backstageViewControl1.SelectedTab = this.backstageViewTabItem1;
+            this.backstageViewControl1.SelectedTabIndex = 0;
             this.backstageViewControl1.Size = new System.Drawing.Size(480, 282);
             this.backstageViewControl1.TabIndex = 4;
+            // 
+            // backstageViewClientControl1
+            // 
+            this.backstageViewClientControl1.Controls.Add(this.btn_RunPy);
+            this.backstageViewClientControl1.Controls.Add(this.tbx_PyFile);
+            this.backstageViewClientControl1.Controls.Add(this.tbx_PythonExe);
+            this.backstageViewClientControl1.Controls.Add(this.btn_SelectPyFile);
+            this.backstageViewClientControl1.Controls.Add(this.btn_SelectPythonExe);
+            this.backstageViewClientControl1.Location = new System.Drawing.Point(192, 0);
+            this.backstageViewClientControl1.Name = "backstageViewClientControl1";
+            this.backstageViewClientControl1.Size = new System.Drawing.Size(288, 282);
+            this.backstageViewClientControl1.TabIndex = 1;
+            // 
+            // btn_RunPy
+            // 
+            this.btn_RunPy.Location = new System.Drawing.Point(191, 129);
+            this.btn_RunPy.Name = "btn_RunPy";
+            this.btn_RunPy.Size = new System.Drawing.Size(75, 23);
+            this.btn_RunPy.TabIndex = 2;
+            this.btn_RunPy.Text = "run";
+            this.btn_RunPy.Click += new System.EventHandler(this.btn_RunPy_Click);
+            // 
+            // tbx_PyFile
+            // 
+            this.tbx_PyFile.Location = new System.Drawing.Point(14, 103);
+            this.tbx_PyFile.Name = "tbx_PyFile";
+            this.tbx_PyFile.Size = new System.Drawing.Size(252, 20);
+            this.tbx_PyFile.TabIndex = 1;
+            // 
+            // tbx_PythonExe
+            // 
+            this.tbx_PythonExe.Location = new System.Drawing.Point(14, 47);
+            this.tbx_PythonExe.MenuManager = this.ribbonControl1;
+            this.tbx_PythonExe.Name = "tbx_PythonExe";
+            this.tbx_PythonExe.Size = new System.Drawing.Size(252, 20);
+            this.tbx_PythonExe.TabIndex = 1;
+            // 
+            // btn_SelectPyFile
+            // 
+            this.btn_SelectPyFile.Location = new System.Drawing.Point(14, 73);
+            this.btn_SelectPyFile.Name = "btn_SelectPyFile";
+            this.btn_SelectPyFile.Size = new System.Drawing.Size(75, 23);
+            this.btn_SelectPyFile.TabIndex = 0;
+            this.btn_SelectPyFile.Text = ".py";
+            this.btn_SelectPyFile.Click += new System.EventHandler(this.btn_SelectPyFile_Click);
+            // 
+            // btn_SelectPythonExe
+            // 
+            this.btn_SelectPythonExe.Location = new System.Drawing.Point(14, 17);
+            this.btn_SelectPythonExe.Name = "btn_SelectPythonExe";
+            this.btn_SelectPythonExe.Size = new System.Drawing.Size(75, 23);
+            this.btn_SelectPythonExe.TabIndex = 0;
+            this.btn_SelectPythonExe.Text = "python.exe";
+            this.btn_SelectPythonExe.Click += new System.EventHandler(this.btn_SelectPythonExe_Click);
             // 
             // backstageViewClientControl2
             // 
@@ -131,13 +193,6 @@
             this.backstageViewClientControl2.Name = "backstageViewClientControl2";
             this.backstageViewClientControl2.Size = new System.Drawing.Size(288, 282);
             this.backstageViewClientControl2.TabIndex = 2;
-            // 
-            // backstageViewClientControl1
-            // 
-            this.backstageViewClientControl1.Location = new System.Drawing.Point(192, 0);
-            this.backstageViewClientControl1.Name = "backstageViewClientControl1";
-            this.backstageViewClientControl1.Size = new System.Drawing.Size(288, 282);
-            this.backstageViewClientControl1.TabIndex = 1;
             // 
             // backstageViewClientControl3
             // 
@@ -158,14 +213,14 @@
             this.backstageViewTabItem1.Caption = "backstageViewTabItem1";
             this.backstageViewTabItem1.ContentControl = this.backstageViewClientControl1;
             this.backstageViewTabItem1.Name = "backstageViewTabItem1";
-            this.backstageViewTabItem1.Selected = false;
+            this.backstageViewTabItem1.Selected = true;
             // 
             // backstageViewTabItem2
             // 
             this.backstageViewTabItem2.Caption = "backstageViewTabItem2";
             this.backstageViewTabItem2.ContentControl = this.backstageViewClientControl2;
             this.backstageViewTabItem2.Name = "backstageViewTabItem2";
-            this.backstageViewTabItem2.Selected = true;
+            this.backstageViewTabItem2.Selected = false;
             // 
             // backstageViewItemSeparator1
             // 
@@ -412,6 +467,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
             this.backstageViewControl1.ResumeLayout(false);
+            this.backstageViewClientControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbx_PyFile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbx_PythonExe.Properties)).EndInit();
             this.tabPane1.ResumeLayout(false);
             this.tabPage_DataView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl_Main)).EndInit();
@@ -462,6 +520,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraEditors.TextEdit tbx_PyFile;
+        private DevExpress.XtraEditors.TextEdit tbx_PythonExe;
+        private DevExpress.XtraEditors.SimpleButton btn_SelectPyFile;
+        private DevExpress.XtraEditors.SimpleButton btn_SelectPythonExe;
+        private DevExpress.XtraEditors.SimpleButton btn_RunPy;
     }
 }
 

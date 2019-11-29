@@ -84,8 +84,10 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -121,6 +123,7 @@
       <DependentUpon>FSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="MyUtils\AE.cs" />
+    <Compile Include="MyUtils\Py.cs" />
     <Compile Include="MyUtils\SQL.cs" />
     <Compile Include="MyUtils\System.cs" />
     <Compile Include="Program.cs" />
