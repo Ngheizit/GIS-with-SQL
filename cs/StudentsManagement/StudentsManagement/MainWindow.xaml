@@ -7,7 +7,7 @@
         xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" x:Class="StudentsManagement.MainWindow"
-        Title="MainWindow" Height="657.638" Width="788" Loaded="ThemedWindow_Loaded" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="672.638" Width="989" Loaded="ThemedWindow_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -36,7 +36,13 @@
                         </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
-                <dxr:RibbonPage Caption="学生管理"/>
+                <dxr:RibbonPage Caption="学生管理">
+                    <dxr:RibbonPageGroup Caption="学生信息编辑">
+                        <dxb:BarButtonItem x:Name="btn_AddStudent" Content="添加" Glyph="{dx:DXImageGrayscale Image=Add_32x32.png}" RibbonStyle="Large" ItemClick="btn_AddStudent_Click"/>
+                        <dxb:BarButtonItem x:Name="btn_ModifyStudent" Content="修改" Glyph="{dx:DXImage Image=SnapModifyTableCellStyle_32x32.png}" LargeGlyph="{dx:DXImage Image=SnapModifyTableCellStyle_32x32.png}" ItemClick="btn_ModifyStudent_Click"/>
+                        <dxb:BarButtonItem x:Name="btn_DeleteStudent" Content="删除" Glyph="{dx:DXImage Image=Clear_32x32.png}" LargeGlyph="{dx:DXImage Image=Clear_32x32.png}" ItemClick="btn_DeleteStudent_Click"/>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
         </dxr:RibbonControl>
         <dxr:RibbonStatusBarControl Grid.Row="2">
@@ -45,8 +51,8 @@
                 <dxb:BarEditItem x:Name="tbx_MapScaleInfo" Content=""></dxb:BarEditItem>
             </dxr:RibbonStatusBarControl.LeftItems>
         </dxr:RibbonStatusBarControl>
-        <i:WindowsFormsHost x:Name="mapHost" Grid.Row="1" Margin="0,0,194,0"/>
-        <DataGrid Grid.Row="1" HorizontalAlignment="Right" Width="194"/>
+        <i:WindowsFormsHost x:Name="mapHost" Grid.Row="1" Margin="0,0,376,0"/>
+        <DataGrid x:Name="DataGridView_Student" Grid.Row="1" IsReadOnly="True" HorizontalAlignment="Right" Width="376" AutoGeneratingColumn="DataGridView_Student_AutoGeneratingColumn" />
 
 
     </Grid>

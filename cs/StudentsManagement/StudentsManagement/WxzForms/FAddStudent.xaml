@@ -1,0 +1,46 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" x:Class="StudentsManagement.WxzForms.FAddStudent"
+        Title="FAddStudent" Height="348" Width="305" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown_1" Topmost="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded_1">
+    <Grid>
+
+        <dxwui:SlideView Header="" Orientation="Vertical" Margin="0,0,0,52">
+            <dxwui:SlideViewItem Header="位置：" Width="200" Margin="0,70,0,0">
+                <Grid Background="#FFE5E5E5" Height="30">
+                    <dxe:TextEdit x:Name="tbx_Location" Margin="0,0,60,0"/>
+                    <dx:SimpleButton Margin="140,0,0,0" GlyphAlignment="Top" Glyph="{dx:DXImage Image=GeoPoint_32x32.png}" Click="SimpleButton_Click_1"/>
+                </Grid>
+            </dxwui:SlideViewItem>
+            <dxwui:SlideViewItem Header="学号：" Width="200">
+                <Grid Background="#FFE5E5E5" Height="30">
+                    <dxe:TextEdit x:Name="tbx_SID"/>
+                </Grid>
+            </dxwui:SlideViewItem>
+            <dxwui:SlideViewItem Header="姓名：" Width="200">
+                <Grid Background="#FFE5E5E5" Height="30">
+                    <dxe:TextEdit x:Name="tbx_SNAME"/>
+                </Grid>
+            </dxwui:SlideViewItem>
+            <dxwui:SlideViewItem Header="性别：" Width="200">
+                <Grid Background="#FFE5E5E5" Height="30">
+                    <ComboBox x:Name="tbx_SSEX" IsReadOnly="True">
+                        <ListBoxItem Content="男"/>
+                        <ListBoxItem Content="女"/>
+                    </ComboBox>
+                </Grid>
+            </dxwui:SlideViewItem>
+            <dxwui:SlideViewItem Header="生日：" Width="200">
+                <Grid Background="#FFE5E5E5" Height="30">
+                    <dxe:DateEdit x:Name="tbx_SBIRTH"/>
+                </Grid>
+            </dxwui:SlideViewItem>
+            <dxwui:SlideViewItem Header="家庭地址：" Width="200">
+                <Grid Background="#FFE5E5E5" Height="30">
+                    <dxe:TextEdit x:Name="tbx_HOME"/>
+                </Grid>
+            </dxwui:SlideViewItem>
+        </dxwui:SlideView>
+        <dx:SimpleButton HorizontalAlignment="Left" Height="25" Margin="29,313,0,0" VerticalAlignment="Top" Width="98" Content="添加" Glyph="{dx:DXImage Image=Apply_32x32.png}" Click="SimpleButton_Click_3"/>
+        <dx:SimpleButton HorizontalAlignment="Left" Height="25" Margin="179,313,0,0" VerticalAlignment="Top" Width="98" Content="取消" Glyph="{dx:DXImage Image=Cancel_32x32.png}" Click="SimpleButton_Click_2"/>
+        <Label Content="添加学生信息" HorizontalAlignment="Left" VerticalAlignment="Top" Width="305" Height="70" FontSize="28" Padding="50,18" Background="#fff"/>
+
+    </Grid>
+</Window>

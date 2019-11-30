@@ -13,3 +13,5 @@ D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\bin\Debug\Stude
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.exe
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.pdb
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\bin\Debug\DevExpress.Images.v18.1.dll
+D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\WxzForms\FAddStudent.baml
+D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\WxzForms\FAddStudent.g.cs
