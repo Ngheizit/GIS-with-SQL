@@ -7,7 +7,7 @@
         xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" x:Class="StudentsManagement.MainWindow"
-        Title="MainWindow" Height="672.638" Width="989" Loaded="ThemedWindow_Loaded" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="672.638" Width="989" Loaded="ThemedWindow_Loaded" WindowStartupLocation="CenterScreen" Closed="ThemedWindow_Closed_1">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,11 +20,10 @@
                 <dxb:BarButtonItemLink BarItemName="newItem"/>
             </dxr:RibbonControl.ToolbarItems>
             <dxr:RibbonDefaultPageCategory>
-                <dxr:RibbonPage Caption="开 始">
+                <dxr:RibbonPage Caption="地 图 操 作">
                     <dxr:RibbonPageGroup Caption="地图文档管理">
                         <dxb:BarButtonItem x:Name="btn_Save" Content="保存" Glyph="{dx:DXImage Image=Save_32x32.png}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" ItemClick="btn_Save_Click"/>
-                        <dxb:BarButtonItem x:Name="btn_SaveAs" Content="另存为" LargeGlyph="{dx:DXImage Image=SaveAs_32x32.png}"/>
-                        <dxb:BarButtonItem x:Name="btn_Exit" Content="退出" Glyph="{dx:DXImage Image=Close_32x32.png}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}"/>
+                        <dxb:BarButtonItem x:Name="btn_Exit" Content="退出" Glyph="{dx:DXImage Image=Close_32x32.png}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}" ItemClick="btn_Exit_ItemClick"/>
                     </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption="导航">
                         <dxb:BarButtonItem x:Name="btn_FullExtent" Content="全图显示" Glyph="{dx:DXImage Image=BOLocalization_32x32.png}" LargeGlyph="{dx:DXImage Image=BOLocalization_32x32.png}" ItemClick="btn_FullExtent_Click"/>
@@ -36,11 +35,23 @@
                         </dxb:BarButtonItem>
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
-                <dxr:RibbonPage Caption="学生管理">
+                <dxr:RibbonPage Caption="学 生 管 理">
                     <dxr:RibbonPageGroup Caption="学生信息编辑">
                         <dxb:BarButtonItem x:Name="btn_AddStudent" Content="添加" Glyph="{dx:DXImageGrayscale Image=Add_32x32.png}" RibbonStyle="Large" ItemClick="btn_AddStudent_Click"/>
                         <dxb:BarButtonItem x:Name="btn_ModifyStudent" Content="修改" Glyph="{dx:DXImage Image=SnapModifyTableCellStyle_32x32.png}" LargeGlyph="{dx:DXImage Image=SnapModifyTableCellStyle_32x32.png}" ItemClick="btn_ModifyStudent_Click"/>
                         <dxb:BarButtonItem x:Name="btn_DeleteStudent" Content="删除" Glyph="{dx:DXImage Image=Clear_32x32.png}" LargeGlyph="{dx:DXImage Image=Clear_32x32.png}" ItemClick="btn_DeleteStudent_Click"/>
+                    </dxr:RibbonPageGroup>
+                    <dxr:RibbonPageGroup Caption="学生信息查询">
+                        <dxb:BarButtonItem x:Name="btn_Search" Content="查询" Glyph="{dx:DXImage Image=Zoom_32x32.png}" LargeGlyph="{dx:DXImage Image=Zoom_32x32.png}" ItemClick="btn_Search_ItemClick"/>
+                        <dxb:BarButtonItem x:Name="btn_ShowSelect" Content="查询选择" Glyph="{dx:DXImage Image=PrintPreviewBrowser_32x32.png}" LargeGlyph="{dx:DXImage Image=PrintPreviewBrowser_32x32.png}" ItemClick="btn_ShowSelect_ItemClick"/>
+                        <dxb:BarButtonItem x:Name="btn_ZoomToSelect" Content="定位到选择" Glyph="{dx:DXImage Image=FullExtent_32x32.png}" LargeGlyph="{dx:DXImage Image=GeoPoint_32x32.png}" ItemClick="btn_ZoomToSelect_ItemClick"/>
+                        <dxb:BarButtonItem x:Name="btn_ClearSelect" Content="清空选择" Glyph="{dx:DXImage Image=ClearTableStyle_32x32.png}" LargeGlyph="{dx:DXImage Image=ClearTableStyle_32x32.png}" ItemClick="btn_ClearSelect_ItemClick"/>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+                <dxr:RibbonPage Caption="用 户 管 理">
+                    <dxr:RibbonPageGroup Caption="用户信息编辑" Glyph="{dx:DXImage Image=EditName_32x32.png}">
+                        <dxb:BarButtonItem x:Name="btn_NewUName" Content="更改用户名" LargeGlyph="{dx:DXImage Image=EditName_32x32.png}" Glyph="{dx:DXImage Image=EditName_16x16.png}" ItemClick="btn_NewUName_ItemClick"/>
+                        <dxb:BarButtonItem x:Name="btn_NewUPassword" Content="修改密码" LargeGlyph="{dx:DXImage Image=PenColor_32x32.png}" Glyph="{dx:DXImage Image=PenColor_16x16.png}" ItemClick="btn_NewUPassword_ItemClick"/>
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
@@ -52,7 +63,7 @@
             </dxr:RibbonStatusBarControl.LeftItems>
         </dxr:RibbonStatusBarControl>
         <i:WindowsFormsHost x:Name="mapHost" Grid.Row="1" Margin="0,0,376,0"/>
-        <DataGrid x:Name="DataGridView_Student" Grid.Row="1" IsReadOnly="True" HorizontalAlignment="Right" Width="376" AutoGeneratingColumn="DataGridView_Student_AutoGeneratingColumn" />
+        <DataGrid x:Name="DataGridView_Student" Grid.Row="1" IsReadOnly="True" HorizontalAlignment="Right" Width="376" SelectionMode="Single" SelectionChanged="DataGridView_Student_SelectionChanged" MouseDoubleClick="DataGridView_Student_MouseDoubleClick" AutoGeneratingColumn="DataGridView_Student_AutoGeneratingColumn" />
 
 
     </Grid>

@@ -62,6 +62,7 @@
     <Reference Include="DevExpress.Xpf.Themes.Office2016White.v18.1" />
     <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.2.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
@@ -106,8 +107,10 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -133,6 +136,21 @@
     <Compile Include="WxzForms\FAddStudent.xaml.cs">
       <DependentUpon>FAddStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WxzForms\FResetUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WxzForms\FResetUserInfo.Designer.cs">
+      <DependentUpon>FResetUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WxzForms\FSignIn.xaml.cs">
+      <DependentUpon>FSignIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WxzForms\FStudentInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WxzForms\FStudentInfo.Designer.cs">
+      <DependentUpon>FStudentInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="WxzUtils\Ae.cs" />
     <Compile Include="WxzUtils\Sql.cs" />
     <Page Include="MainWindow.xaml">
@@ -148,6 +166,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="WxzForms\FAddStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WxzForms\FSignIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,6 +192,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WxzForms\FResetUserInfo.resx">
+      <DependentUpon>FResetUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WxzForms\FStudentInfo.resx">
+      <DependentUpon>FStudentInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

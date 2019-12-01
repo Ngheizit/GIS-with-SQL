@@ -1,5 +1,4 @@
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\bin\Debug\StudentsManagement.exe.config
-D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.csprojResolveAssemblyReference.cache
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\MainWindow.baml
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\MainWindow.g.cs
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\App.g.cs
@@ -15,3 +14,7 @@ D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\Stude
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\bin\Debug\DevExpress.Images.v18.1.dll
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\WxzForms\FAddStudent.baml
 D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\WxzForms\FAddStudent.g.cs
+D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.WxzForms.FStudentInfo.resources
+D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\WxzForms\FSignIn.baml
+D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\WxzForms\FSignIn.g.cs
+D:\gitproj\gis2sql\this\cs\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.WxzForms.FResetUserInfo.resources

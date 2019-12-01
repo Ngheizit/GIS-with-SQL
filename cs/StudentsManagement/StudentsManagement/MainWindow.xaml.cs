@@ -33,6 +33,7 @@ namespace StudentsManagement
         private IMapControl2 m_pMapC2;
         private IMapDocument m_pMapDoc;
         private WxzForms.FAddStudent f_AddStudent;
+        private WxzForms.FStudentInfo f_StudentInfo;
 
         public MainWindow()
         {
@@ -48,10 +49,11 @@ namespace StudentsManagement
             this.axMapControl_Main.OnMouseDown += axMapControl_Main_OnMouseDown;
             this.axMapControl_Main.OnMouseMove += axMapControl_Main_OnMouseMove;
             this.axMapControl_Main.OnExtentUpdated += axMapControl_Main_OnExtentUpdated;
-            this.f_AddStudent = new WxzForms.FAddStudent() { 
-                
-            };
+            this.f_AddStudent = new WxzForms.FAddStudent();
             f_AddStudent.updateDatGrid += new Update(UpdateDataTable);
+            this.f_StudentInfo = new WxzForms.FStudentInfo();
+            
+
 
             UpdateDataTable();
 
@@ -80,16 +82,28 @@ namespace StudentsManagement
                 f_AddStudent.WindowState = WindowState.Normal;
                 m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerArrow;
             }
+            else if (e.button == 1 && m_pMapC2.MousePointer == esriControlsMousePointer.esriPointerIdentify)
+            {
+                WxzUtils.Ae.SelectStudentByPoint(new PointClass() { 
+                    X = e.mapX, Y = e.mapY, SpatialReference = m_pMapC2.SpatialReference
+                });
+                string id = WxzUtils.Ae.GetSelectStudentId();
+                for (int i = 0; i < DataGridView_Student.Items.Count; i++)
+                {
+                    if ((DataGridView_Student.Items[i] as DataRowView)[0].ToString() == id)
+                    {
+                        DataGridView_Student.SelectedIndex = i;
+                        ShowStudentInfo();
+                        return;
+                    }
+                }
+
+            }
         }
         void axMapControl_Main_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
         {
             string lonlatUnit = String.Format("{0} {1} {2}", e.mapX.ToString(".###"), e.mapY.ToString(".###"), m_pMapC2.MapUnits.ToString().Substring(4));
-
-            //IPoint pPoint = WxzUtils.Ae.PRJtoGCS(new PointClass() { 
-            //    X = e.mapX, Y = e.mapY, SpatialReference = m_pMapC2.SpatialReference
-            //});
-            //string lonlatUnit = String.Format("{0} {1} {2}", pPoint.X, pPoint.Y, "Decimal Degree");
-
+            
             tbx_LocationInfo.Content = lonlatUnit;
         }
         void axMapControl_Main_OnExtentUpdated(object sender, IMapControlEvents2_OnExtentUpdatedEvent e)
@@ -146,25 +160,162 @@ namespace StudentsManagement
         {
             if (e.PropertyType == typeof(System.DateTime))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "yyyy/MM/dd";
-        } 
+        }
+        private void ShowStudentInfo()
+        {
+            DataRowView row = (DataRowView)DataGridView_Student.SelectedItem;
+            if (row == null)
+                return;
+            string sid = row[1].ToString();
+            string sname = row[2].ToString();
+            string ssex = row[3].ToString();
+            string sbirth = row[4].ToString().Split(' ')[0];
+            string shome = row[5].ToString();
+            if (f_StudentInfo.IsDisposed)
+            {
+                f_StudentInfo = new WxzForms.FStudentInfo();
+            }
+            f_StudentInfo.SetInfo(sid, sname, ssex, sbirth, shome);
+            f_StudentInfo.Show();
+        }
         #endregion
 
         #region → 学生信息增删改
         private void btn_AddStudent_Click(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            if (f_AddStudent.IsHitTestVisible)
-            {
-                f_AddStudent.Show();
-            }
+            f_AddStudent.SetAdd();
+            f_AddStudent.Show();
         }
         private void btn_ModifyStudent_Click(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-
+            
+            if (DataGridView_Student.SelectedIndex != -1)
+            {
+                DataRowView row = (DataRowView)DataGridView_Student.SelectedItem;
+                string id = row[0].ToString();
+                string sid = row[1].ToString();
+                string sname = row[2].ToString();
+                string ssex = row[3].ToString();
+                string sbirth = row[4].ToString().Split(' ')[0];
+                string shome = row[5].ToString();
+                IFeatureLayer pFeatureLayer = WxzUtils.Ae.GetFeatureLayerByName("Students");
+                IFeatureCursor pFeatureCursor = pFeatureLayer.FeatureClass.Search(null, false);
+                IFeature pFeature = pFeatureCursor.NextFeature();
+                while (pFeature != null)
+                {
+                    if (pFeature.get_Value(pFeature.Fields.FindField("Id")).ToString() == id.ToString())
+                    {
+                        IPoint pPoint = pFeature.Shape as IPoint;
+                        f_AddStudent.SetModify(pPoint, id, sid, sname, ssex, sbirth, shome);
+                        f_AddStudent.Show();
+                        return;
+                    }
+                    pFeature = pFeatureCursor.NextFeature();
+                }
+            }
+            else
+                MessageBox.Show("请选择需要修改的学生");
         }
         private void btn_DeleteStudent_Click(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-
+            f_AddStudent.Hide();
+            if (DataGridView_Student.SelectedIndex != -1)
+            {
+                DataRowView row = (DataRowView)DataGridView_Student.SelectedItem;
+                string id = row[0].ToString();
+                string sname = row[2].ToString();
+                if (MessageBox.Show(String.Format("是否删除学生【{0}】", sname), "提醒", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    if (WxzUtils.Sql.CommandSQL(
+                        String.Format("DELETE FROM StudentInfo WHERE Id= '{0}'", id)) != 0)
+                    {
+                        WxzUtils.Ae.DeleteStudent(id);
+                        m_pMapC2.Refresh();
+                        UpdateDataTable();
+                        MessageBox.Show(String.Format("学生【{0}】删除成功", sname));
+                    }
+                    else
+                        MessageBox.Show(String.Format("学生【{0}】删除失败", sname));
+                }
+            }
+            else
+                MessageBox.Show("请选择需要删除的学生");
         } 
         #endregion
+
+        #region → 程序关闭事件
+        private void ThemedWindow_Closed_1(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btn_Exit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        #endregion
+
+
+        #region → 学生管理 学生信息查询
+        private void DataGridView_Student_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView row = (DataRowView)DataGridView_Student.SelectedItem;
+            if (row != null)
+            {
+                string id = row[0].ToString();
+                WxzUtils.Ae.SelectStudentById(id);
+
+                if (f_StudentInfo.IsDisposed)
+                {
+                    f_StudentInfo = new WxzForms.FStudentInfo();
+                }
+                string sid = row[1].ToString();
+                string sname = row[2].ToString();
+                string ssex = row[3].ToString();
+                string sbirth = row[4].ToString().Split(' ')[0];
+                string shome = row[5].ToString();
+                f_StudentInfo.SetInfo(sid, sname, ssex, sbirth, shome);
+            }
+        }
+        private void btn_Search_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerIdentify;
+        }
+        private void btn_ShowSelect_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            ShowStudentInfo();
+        }
+        private void btn_ZoomToSelect_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            WxzUtils.Ae.ZoomToSelectedStudent();
+        }
+        private void btn_ClearSelect_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            m_pMapC2.Map.ClearSelection();
+            m_pMapC2.Refresh();
+        } 
+        #endregion
+
+        private void DataGridView_Student_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try {
+                WxzUtils.Ae.ZoomToSelectedStudent();
+            }
+            catch{ }
+        }
+
+        private void btn_NewUName_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            new WxzForms.FResetUserInfo(true).ShowDialog();
+        }
+
+        private void btn_NewUPassword_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            new WxzForms.FResetUserInfo(false).ShowDialog();
+        }
+
+        
+
     }
 }

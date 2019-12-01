@@ -27,6 +27,33 @@ namespace StudentsManagement.WxzForms
         {
             InitializeComponent();
         }
+        public void SetModify(IPoint point, string id, string sid, string sname, string ssex, string sbirth, string shome)
+        {
+            this.lb_title.Content = String.Format("修改学生(ID:{0})信息", id);
+            this.tbx_Location.Text = String.Format("{0} {1}", point.X, point.Y);
+            this.id = id;
+            this.m_pPoint = point;
+            WxzUtils.Ae.DrawPoint(point);
+            this.m_home = shome;
+            this.tbx_SID.Text = sid;
+            this.tbx_SNAME.Text = sname;
+            this.tbx_SSEX.Text = ssex;
+            this.tbx_SBIRTH.Text = sbirth;
+            this.tbx_HOME.Text = shome;
+            this.isReady2Add = false;
+        }
+        public void SetAdd()
+        {
+            SetTextNull(tbx_HOME);
+            SetTextNull(tbx_Location);
+            SetTextNull(tbx_SBIRTH);
+            SetTextNull(tbx_SID);
+            SetTextNull(tbx_SNAME);
+            SetTextNull(tbx_SSEX);
+            this.lb_title.Content = "添加学生信息";
+            this.isReady2Add = true;
+        }
+
         private IPoint m_pPoint;
         public IPoint Point
         {
@@ -46,6 +73,8 @@ namespace StudentsManagement.WxzForms
             }
         }
         public event Update updateDatGrid;
+        private bool isReady2Add;
+        private string id;
 
         private void Window_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
@@ -53,7 +82,7 @@ namespace StudentsManagement.WxzForms
                 this.DragMove();
         }
 
-        private void SimpleButton_Click_1(object sender, RoutedEventArgs e)
+        private void btn_SelectLocation_Click(object sender, RoutedEventArgs e)
         {
             bool isAdding = (WxzUtils.Ae.IsAddingStudent = !WxzUtils.Ae.IsAddingStudent);
             if (isAdding)
@@ -63,7 +92,7 @@ namespace StudentsManagement.WxzForms
             }
         }
 
-        private void SimpleButton_Click_2(object sender, RoutedEventArgs e)
+        private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
             WxzUtils.Ae.DeleteAllElements();
             SetTextNull(tbx_HOME);
@@ -75,7 +104,7 @@ namespace StudentsManagement.WxzForms
             this.Hide();
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
         }
@@ -88,7 +117,7 @@ namespace StudentsManagement.WxzForms
             td.Text = "";
         }
 
-        private void SimpleButton_Click_3(object sender, RoutedEventArgs e)
+        private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
             string strSID = tbx_SID.Text,
                    strSNAME = tbx_SNAME.Text,
@@ -100,25 +129,39 @@ namespace StudentsManagement.WxzForms
                 MessageBox.Show("学生信息未填写完成");
                 return;
             }
-            if (WxzUtils.Sql.CommandSQL(
-                String.Format("INSERT INTO  StudentInfo (SID,SName,SSex,SBirth,SHome) VALUES ('{0}','{1}','{2}','{3}','{4}')"
-                              , strSID, strSNAME, strSSEX, strSBIRTH, strSHOME)) != 0)
+            if (isReady2Add) // 添加学生信息
             {
-                DataTable dt = WxzUtils.Sql.GetDataTable(String.Format("SELECT Id FROM StudentInfo WHERE SID = '{0}' AND SName = '{1}'",
-                    strSID, strSNAME));
-                string strId = dt.Rows[0][0].ToString();
-                WxzUtils.Ae.AddStudent(m_pPoint, strId, strSID, strSNAME, strSSEX, strSBIRTH, strSHOME);
-                updateDatGrid();
+                if (WxzUtils.Sql.CommandSQL(
+                        String.Format("INSERT INTO  StudentInfo (SID,SName,SSex,SBirth,SHome) VALUES ('{0}','{1}','{2}','{3}','{4}')"
+                                      , strSID, strSNAME, strSSEX, strSBIRTH, strSHOME)) != 0)
+                {
+                    DataTable dt = WxzUtils.Sql.GetDataTable(String.Format("SELECT Id FROM StudentInfo WHERE SID = '{0}' AND SName = '{1}'",
+                        strSID, strSNAME));
+                    string strId = dt.Rows[0][0].ToString();
+                    WxzUtils.Ae.AddStudent(m_pPoint, strId, strSID, strSNAME, strSSEX, strSBIRTH, strSHOME);
+                    updateDatGrid();
 
-                SetTextNull(tbx_HOME);
-                SetTextNull(tbx_Location);
-                SetTextNull(tbx_SBIRTH);
-                SetTextNull(tbx_SID);
-                SetTextNull(tbx_SNAME);
-                SetTextNull(tbx_SSEX);
-                MessageBox.Show(String.Format("学生【{0}】添加成功", strSNAME));
-                this.Hide();
+                    MessageBox.Show(String.Format("学生【{0}】添加成功", strSNAME));
+                }
             }
+            else // 修改学生信息
+            {
+                if (WxzUtils.Sql.CommandSQL(
+                        String.Format("UPDATE StudentInfo SET SID = '{0}', SName = '{1}', SSex = '{2}', SBirth = '{3}', SHome = '{4}' WHERE  Id = '{5}'",
+                                        strSID, strSNAME, strSSEX, strSBIRTH, strSHOME, id)) != 0)
+                {
+                    WxzUtils.Ae.ModifyStudent(m_pPoint, id, strSID, strSNAME, strSSEX, strSBIRTH, strSHOME);
+                    updateDatGrid();
+                    MessageBox.Show(String.Format("学生【ID:{0}】修改成功", id));
+                }
+            }
+            SetTextNull(tbx_HOME);
+            SetTextNull(tbx_Location);
+            SetTextNull(tbx_SBIRTH);
+            SetTextNull(tbx_SID);
+            SetTextNull(tbx_SNAME);
+            SetTextNull(tbx_SSEX);
+            this.Hide();
         }
 
     }

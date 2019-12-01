@@ -54,9 +54,10 @@ namespace StudentsManagement.WxzUtils
 
         public static void Pan()
         {
+            esriControlsMousePointer mousePointer = m_pMapC2.MousePointer;
             m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerPanning;
             m_pMapC2.Pan();
-            m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerArrow;
+            m_pMapC2.MousePointer = mousePointer;
         }
         public static void Zoom(double increment)
         {
@@ -68,24 +69,62 @@ namespace StudentsManagement.WxzUtils
         {
             IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
 
-            IFeatureClassWrite pWrite = pFeatureLayer.FeatureClass as IFeatureClassWrite;
-            IWorkspaceEdit pEdit = (pFeatureLayer.FeatureClass as IDataset).Workspace as IWorkspaceEdit;
-            pEdit.StartEditing(true);
-            pEdit.StartEditOperation();
             IFeature pFeature = pFeatureLayer.FeatureClass.CreateFeature();
             pFeature.Shape = point;
-            pFeature.set_Value(pFeatureLayer.FeatureClass.Fields.FindField("Id"), Id);
-            pFeature.set_Value(pFeatureLayer.FeatureClass.Fields.FindField("SID"), SID);
-            pFeature.set_Value(pFeatureLayer.FeatureClass.Fields.FindField("SNAME"), SNAME);
-            pFeature.set_Value(pFeatureLayer.FeatureClass.Fields.FindField("SSEX"), SSEX);
-            pFeature.set_Value(pFeatureLayer.FeatureClass.Fields.FindField("SBIRTH"), SBIRTH);
-            pFeature.set_Value(pFeatureLayer.FeatureClass.Fields.FindField("SHOME"), SHOME);
-            pFeature.Store();
-            pWrite.WriteFeature(pFeature);
-            pEdit.StopEditOperation();
-            pEdit.StopEditing(true);
+            SetStudentInfo(pFeatureLayer, pFeature, Id, SID, SNAME, SSEX, SBIRTH, SHOME);
 
             DeleteAllElements();
+        }
+        private static void SetStudentInfo(IFeatureLayer featureLayer, IFeature feature, object Id, object SID, object SNAME, object SSEX, object SBIRTH, object SHOME)
+        {
+            IFeatureClassWrite pWrite = featureLayer.FeatureClass as IFeatureClassWrite;
+            IWorkspaceEdit pEdit = (featureLayer.FeatureClass as IDataset).Workspace as IWorkspaceEdit;
+            pEdit.StartEditing(true);
+            pEdit.StartEditOperation();
+            feature.set_Value(featureLayer.FeatureClass.Fields.FindField("Id"), Id);
+            feature.set_Value(featureLayer.FeatureClass.Fields.FindField("SID"), SID);
+            feature.set_Value(featureLayer.FeatureClass.Fields.FindField("SNAME"), SNAME);
+            feature.set_Value(featureLayer.FeatureClass.Fields.FindField("SSEX"), SSEX);
+            feature.set_Value(featureLayer.FeatureClass.Fields.FindField("SBIRTH"), SBIRTH);
+            feature.set_Value(featureLayer.FeatureClass.Fields.FindField("SHOME"), SHOME);
+            feature.Store();
+            pWrite.WriteFeature(feature);
+            pEdit.StopEditOperation();
+            pEdit.StopEditing(true);
+        }
+        public static void ModifyStudent(IPoint point, object Id, object SID, object SNAME, object SSEX, object SBIRTH, object SHOME)
+        {
+            IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
+
+            
+            IFeatureCursor pFeatureCursor = pFeatureLayer.FeatureClass.Search(null, false);
+            IFeature pFeature = pFeatureCursor.NextFeature();
+            while (pFeature != null)
+            {
+                if (pFeature.get_Value(pFeature.Fields.FindField("Id")).ToString() == Id.ToString())
+                {
+                    pFeature.Shape = point;
+                    SetStudentInfo(pFeatureLayer, pFeature, Id, SID, SNAME, SSEX, SBIRTH, SHOME);
+                    DeleteAllElements();
+                    return;
+                }
+                pFeature = pFeatureCursor.NextFeature();
+            }
+        }
+        public static void DeleteStudent(object Id)
+        {
+            IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
+            IFeatureCursor pFeatureCursor = pFeatureLayer.Search(null, false);
+            IFeature pFeature = pFeatureCursor.NextFeature();
+            while (pFeature != null)
+            {
+                if (pFeature.get_Value(pFeature.Fields.FindField("Id")).ToString() == Id.ToString())
+                {
+                    pFeature.Delete();
+                    return;
+                }
+                pFeature = pFeatureCursor.NextFeature();
+            }
         }
 
         public static IRgbColor CreateRgbColor(byte r, byte g, byte b, byte a = 255)
@@ -105,6 +144,7 @@ namespace StudentsManagement.WxzUtils
                 }
             };
             DrawElement(pElement, true);
+            m_pMapC2.Refresh();
         }
         private static void DrawElement(IElement element, bool isDeleteBefore = false)
         {
@@ -157,5 +197,94 @@ namespace StudentsManagement.WxzUtils
             return point;
         }
 
+        private static void SelectByField(IFeatureLayer featureLayer, string fieldname, string value)
+        {
+            IFeatureCursor pFeatureCursor = featureLayer.FeatureClass.Search(null, false);
+            IFeature pFeature = pFeatureCursor.NextFeature();
+            while (pFeature != null)
+            {
+                if (pFeature.get_Value(pFeature.Fields.FindField(fieldname)).ToString() == value)
+                    m_pMapC2.Map.SelectFeature(featureLayer, pFeature);
+                pFeature = pFeatureCursor.NextFeature();
+            }
+            m_pMapC2.Refresh();
+        }
+        private static void SelectByPoint(IFeatureLayer featureLayer, IPoint point, bool justOne = true)
+        {
+            IEnvelope pEnv = point.Envelope;
+            double scale = m_pMapC2.MapScale / 1000;
+            pEnv.XMin -= scale;
+            pEnv.YMin -= scale;
+            pEnv.XMax += scale;
+            pEnv.YMax += scale;
+            
+            ISpatialFilter pSpatialFilter = new SpatialFilterClass() { 
+                Geometry = pEnv,
+                SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects
+            };
+            IFeatureCursor pFeatureCursor = featureLayer.FeatureClass.Search(pSpatialFilter as IQueryFilter, false);
+            IFeature pFeature = pFeatureCursor.NextFeature();
+            
+            if (justOne && pFeature != null)
+            {
+                m_pMapC2.Map.SelectFeature(featureLayer, pFeature);
+            }
+            else 
+            {
+                while (pFeature != null)
+                {
+                    m_pMapC2.Map.SelectFeature(featureLayer, pFeature);
+                    pFeature = pFeatureCursor.NextFeature();
+                }
+            }
+            m_pMapC2.Refresh();
+        }
+        public static void SelectStudentById(string id)
+        {
+            m_pMapC2.Map.ClearSelection();
+            IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
+            SelectByField(pFeatureLayer, "Id", id);
+        }
+        public static void SelectStudentByPoint(IPoint point)
+        {
+            m_pMapC2.Map.ClearSelection();
+            IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
+            SelectByPoint(pFeatureLayer, point);
+        }
+        public static string GetSelectStudentId()
+        {
+            IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
+            IFeature pFeature = GetSelectFeature(pFeatureLayer);
+            if (pFeature != null)
+            {
+                return pFeature.get_Value(pFeature.Fields.FindField("Id")).ToString();
+            }
+            return "";
+        }
+        private static IFeature GetSelectFeature(IFeatureLayer featureLayer)
+        {
+            IEnumFeature pEnumFeature = m_pMapC2.Map.FeatureSelection as IEnumFeature;
+            IFeature pSelectedFeat = pEnumFeature.Next();
+            if (pSelectedFeat == null)
+                return null;
+            string fid = pSelectedFeat.get_Value(0).ToString();
+            IFeatureCursor pFeatureCursor = featureLayer.FeatureClass.Search(null, false);
+            IFeature pFeature = pFeatureCursor.NextFeature();
+            while (pFeature != null)
+            {
+                if (pFeature.get_Value(0).ToString() == fid)
+                    break;
+                pFeature = pFeatureCursor.NextFeature();
+            }
+            return pFeature;
+        }
+        public static void ZoomToSelectedStudent()
+        {
+            IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
+            IEnvelope pEnv = GetSelectFeature(pFeatureLayer).Extent;
+            pEnv.Expand(5, 5, false);
+            m_pMapC2.Extent = pEnv;
+            m_pMapC2.Refresh();
+        }
     }
 }

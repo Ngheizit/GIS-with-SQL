@@ -30,6 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.btn_ResetPassword = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_SignOut = new DevExpress.XtraBars.BarButtonItem();
+            this.tbx_UserInfo = new DevExpress.XtraBars.BarStaticItem();
+            this.btn_OpenMxd = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_SaveMxd = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_SaveAsMxd = new DevExpress.XtraBars.BarButtonItem();
+            this.tbx_LocationInfo = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_FullExtent = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
             this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.btn_RunPy = new DevExpress.XtraEditors.SimpleButton();
@@ -47,19 +62,6 @@
             this.backstageViewTabItem4 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.backstageViewItemSeparator2 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
             this.btn_Exit = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
-            this.btn_ResetPassword = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_SignOut = new DevExpress.XtraBars.BarButtonItem();
-            this.tbx_UserInfo = new DevExpress.XtraBars.BarStaticItem();
-            this.btn_OpenMxd = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_SaveMxd = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_SaveAsMxd = new DevExpress.XtraBars.BarButtonItem();
-            this.tbx_LocationInfo = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabPage_DataView = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.axMapControl_Main = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -69,8 +71,6 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.axTOCControl1 = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::XizheGIS.WaitForm1), true, true);
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_FullExtent = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -90,7 +90,6 @@
             // 
             // ribbonControl1
             // 
-            this.ribbonControl1.ApplicationButtonDropDownControl = this.backstageViewControl1;
             this.ribbonControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -110,10 +109,133 @@
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(1059, 147);
+            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.MacOffice;
+            this.ribbonControl1.Size = new System.Drawing.Size(1059, 133);
             this.ribbonControl1.Toolbar.ItemLinks.Add(this.tbx_UserInfo);
             this.ribbonControl1.Toolbar.ItemLinks.Add(this.tbx_LocationInfo);
+            // 
+            // btn_ResetPassword
+            // 
+            this.btn_ResetPassword.Caption = "修改密码";
+            this.btn_ResetPassword.Glyph = global::XizheGIS.Properties.Resources.editcontact_32x32;
+            this.btn_ResetPassword.Id = 1;
+            this.btn_ResetPassword.Name = "btn_ResetPassword";
+            this.btn_ResetPassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_ResetPassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ResetPassword_ItemClick);
+            // 
+            // btn_SignOut
+            // 
+            this.btn_SignOut.Caption = "切换用户";
+            this.btn_SignOut.Glyph = global::XizheGIS.Properties.Resources.assigntome_32x32;
+            this.btn_SignOut.Id = 2;
+            this.btn_SignOut.Name = "btn_SignOut";
+            this.btn_SignOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_SignOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SignOut_ItemClick);
+            // 
+            // tbx_UserInfo
+            // 
+            this.tbx_UserInfo.Caption = "【显示用户信息】";
+            this.tbx_UserInfo.Glyph = global::XizheGIS.Properties.Resources.role_32x32;
+            this.tbx_UserInfo.Id = 3;
+            this.tbx_UserInfo.Name = "tbx_UserInfo";
+            this.tbx_UserInfo.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // btn_OpenMxd
+            // 
+            this.btn_OpenMxd.Caption = "打开地图文档";
+            this.btn_OpenMxd.Glyph = global::XizheGIS.Properties.Resources.openhyperlink_32x32;
+            this.btn_OpenMxd.Id = 5;
+            this.btn_OpenMxd.Name = "btn_OpenMxd";
+            this.btn_OpenMxd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_OpenMxd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_OpenMxd_Click);
+            // 
+            // btn_SaveMxd
+            // 
+            this.btn_SaveMxd.Caption = "保存地图文档";
+            this.btn_SaveMxd.Glyph = global::XizheGIS.Properties.Resources.save_32x32;
+            this.btn_SaveMxd.Id = 6;
+            this.btn_SaveMxd.Name = "btn_SaveMxd";
+            this.btn_SaveMxd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_SaveMxd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SaveMxd_ItemClick);
+            // 
+            // btn_SaveAsMxd
+            // 
+            this.btn_SaveAsMxd.Caption = "另存为地图文档";
+            this.btn_SaveAsMxd.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_SaveAsMxd.Glyph")));
+            this.btn_SaveAsMxd.Id = 7;
+            this.btn_SaveAsMxd.Name = "btn_SaveAsMxd";
+            this.btn_SaveAsMxd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_SaveAsMxd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SaveAsMxd_ItemClick);
+            // 
+            // tbx_LocationInfo
+            // 
+            this.tbx_LocationInfo.Caption = "【坐标信息】";
+            this.tbx_LocationInfo.Glyph = global::XizheGIS.Properties.Resources.geopointmap_32x32;
+            this.tbx_LocationInfo.Id = 10;
+            this.tbx_LocationInfo.Name = "tbx_LocationInfo";
+            this.tbx_LocationInfo.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "三角形范围";
+            this.barButtonItem1.Glyph = global::XizheGIS.Properties.Resources.lineitem_32x32;
+            this.barButtonItem1.Id = 11;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // btn_FullExtent
+            // 
+            this.btn_FullExtent.Caption = "全图";
+            this.btn_FullExtent.Glyph = global::XizheGIS.Properties.Resources.bolocalization_32x32;
+            this.btn_FullExtent.Id = 12;
+            this.btn_FullExtent.Name = "btn_FullExtent";
+            this.btn_FullExtent.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_FullExtent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_FullExtent_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup4});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "开始";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_ResetPassword);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btn_SignOut);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.ShowCaptionButton = false;
+            this.ribbonPageGroup1.Text = "用户管理";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_OpenMxd);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_SaveMxd);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btn_SaveAsMxd);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.ShowCaptionButton = false;
+            this.ribbonPageGroup2.Text = "地图文档管理";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btn_FullExtent);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "地图浏览";
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup3});
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "空间查询";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "画框查询";
             // 
             // backstageViewControl1
             // 
@@ -129,9 +251,8 @@
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem4);
             this.backstageViewControl1.Items.Add(this.backstageViewItemSeparator2);
             this.backstageViewControl1.Items.Add(this.btn_Exit);
-            this.backstageViewControl1.Location = new System.Drawing.Point(22, 248);
+            this.backstageViewControl1.Location = new System.Drawing.Point(22, 209);
             this.backstageViewControl1.Name = "backstageViewControl1";
-            this.backstageViewControl1.Ribbon = this.ribbonControl1;
             this.backstageViewControl1.SelectedTab = this.backstageViewTabItem1;
             this.backstageViewControl1.SelectedTabIndex = 0;
             this.backstageViewControl1.Size = new System.Drawing.Size(480, 282);
@@ -255,114 +376,6 @@
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.btn_Exit_ItemClick);
             // 
-            // btn_ResetPassword
-            // 
-            this.btn_ResetPassword.Caption = "修改密码";
-            this.btn_ResetPassword.Glyph = global::XizheGIS.Properties.Resources.editcontact_32x32;
-            this.btn_ResetPassword.Id = 1;
-            this.btn_ResetPassword.Name = "btn_ResetPassword";
-            this.btn_ResetPassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_ResetPassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ResetPassword_ItemClick);
-            // 
-            // btn_SignOut
-            // 
-            this.btn_SignOut.Caption = "切换用户";
-            this.btn_SignOut.Glyph = global::XizheGIS.Properties.Resources.assigntome_32x32;
-            this.btn_SignOut.Id = 2;
-            this.btn_SignOut.Name = "btn_SignOut";
-            this.btn_SignOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_SignOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SignOut_ItemClick);
-            // 
-            // tbx_UserInfo
-            // 
-            this.tbx_UserInfo.Caption = "【显示用户信息】";
-            this.tbx_UserInfo.Glyph = global::XizheGIS.Properties.Resources.role_32x32;
-            this.tbx_UserInfo.Id = 3;
-            this.tbx_UserInfo.Name = "tbx_UserInfo";
-            this.tbx_UserInfo.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // btn_OpenMxd
-            // 
-            this.btn_OpenMxd.Caption = "打开地图文档";
-            this.btn_OpenMxd.Glyph = global::XizheGIS.Properties.Resources.openhyperlink_32x32;
-            this.btn_OpenMxd.Id = 5;
-            this.btn_OpenMxd.Name = "btn_OpenMxd";
-            this.btn_OpenMxd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_OpenMxd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_OpenMxd_Click);
-            // 
-            // btn_SaveMxd
-            // 
-            this.btn_SaveMxd.Caption = "保存地图文档";
-            this.btn_SaveMxd.Glyph = global::XizheGIS.Properties.Resources.save_32x32;
-            this.btn_SaveMxd.Id = 6;
-            this.btn_SaveMxd.Name = "btn_SaveMxd";
-            this.btn_SaveMxd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_SaveMxd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SaveMxd_ItemClick);
-            // 
-            // btn_SaveAsMxd
-            // 
-            this.btn_SaveAsMxd.Caption = "另存为地图文档";
-            this.btn_SaveAsMxd.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_SaveAsMxd.Glyph")));
-            this.btn_SaveAsMxd.Id = 7;
-            this.btn_SaveAsMxd.Name = "btn_SaveAsMxd";
-            this.btn_SaveAsMxd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_SaveAsMxd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_SaveAsMxd_ItemClick);
-            // 
-            // tbx_LocationInfo
-            // 
-            this.tbx_LocationInfo.Caption = "【坐标信息】";
-            this.tbx_LocationInfo.Glyph = global::XizheGIS.Properties.Resources.geopointmap_32x32;
-            this.tbx_LocationInfo.Id = 10;
-            this.tbx_LocationInfo.Name = "tbx_LocationInfo";
-            this.tbx_LocationInfo.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "三角形范围";
-            this.barButtonItem1.Glyph = global::XizheGIS.Properties.Resources.lineitem_32x32;
-            this.barButtonItem1.Id = 11;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup4});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "开始";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_ResetPassword);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btn_SignOut);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.ShowCaptionButton = false;
-            this.ribbonPageGroup1.Text = "用户管理";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btn_OpenMxd);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btn_SaveMxd);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btn_SaveAsMxd);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.ShowCaptionButton = false;
-            this.ribbonPageGroup2.Text = "地图文档管理";
-            // 
-            // ribbonPage2
-            // 
-            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "空间查询";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "画框查询";
-            // 
             // tabPane1
             // 
             this.tabPane1.Controls.Add(this.tabPage_DataView);
@@ -373,10 +386,10 @@
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabPage_DataView,
             this.tabPage_LayoutView});
-            this.tabPane1.RegularSize = new System.Drawing.Size(807, 584);
+            this.tabPane1.RegularSize = new System.Drawing.Size(807, 598);
             this.tabPane1.SelectedPage = this.tabPage_DataView;
             this.tabPane1.SelectedPageIndex = 0;
-            this.tabPane1.Size = new System.Drawing.Size(807, 584);
+            this.tabPane1.Size = new System.Drawing.Size(807, 598);
             this.tabPane1.TabIndex = 0;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
@@ -389,7 +402,7 @@
             this.tabPage_DataView.Controls.Add(this.axMapControl_Main);
             this.tabPage_DataView.Controls.Add(this.axLicenseControl1);
             this.tabPage_DataView.Name = "tabPage_DataView";
-            this.tabPage_DataView.Size = new System.Drawing.Size(805, 554);
+            this.tabPage_DataView.Size = new System.Drawing.Size(805, 568);
             // 
             // axMapControl_Main
             // 
@@ -397,7 +410,7 @@
             this.axMapControl_Main.Location = new System.Drawing.Point(0, 0);
             this.axMapControl_Main.Name = "axMapControl_Main";
             this.axMapControl_Main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl_Main.OcxState")));
-            this.axMapControl_Main.Size = new System.Drawing.Size(805, 554);
+            this.axMapControl_Main.Size = new System.Drawing.Size(805, 568);
             this.axMapControl_Main.TabIndex = 4;
             this.axMapControl_Main.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl_Main_OnMouseDown);
             this.axMapControl_Main.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl_Main_OnMouseMove);
@@ -418,7 +431,7 @@
             this.tabPage_LayoutView.Caption = "布局视图";
             this.tabPage_LayoutView.Controls.Add(this.axPageLayoutControl_Main);
             this.tabPage_LayoutView.Name = "tabPage_LayoutView";
-            this.tabPage_LayoutView.Size = new System.Drawing.Size(805, 554);
+            this.tabPage_LayoutView.Size = new System.Drawing.Size(805, 568);
             // 
             // axPageLayoutControl_Main
             // 
@@ -426,7 +439,7 @@
             this.axPageLayoutControl_Main.Location = new System.Drawing.Point(0, 0);
             this.axPageLayoutControl_Main.Name = "axPageLayoutControl_Main";
             this.axPageLayoutControl_Main.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPageLayoutControl_Main.OcxState")));
-            this.axPageLayoutControl_Main.Size = new System.Drawing.Size(805, 554);
+            this.axPageLayoutControl_Main.Size = new System.Drawing.Size(805, 568);
             this.axPageLayoutControl_Main.TabIndex = 0;
             this.axPageLayoutControl_Main.OnMouseDown += new ESRI.ArcGIS.Controls.IPageLayoutControlEvents_Ax_OnMouseDownEventHandler(this.axPageLayoutControl_Main_OnMouseDown);
             this.axPageLayoutControl_Main.OnMouseMove += new ESRI.ArcGIS.Controls.IPageLayoutControlEvents_Ax_OnMouseMoveEventHandler(this.axPageLayoutControl_Main_OnMouseMove);
@@ -434,14 +447,14 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 147);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 133);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tabPane1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.axTOCControl1);
             this.splitContainerControl1.Panel2.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1059, 584);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1059, 598);
             this.splitContainerControl1.SplitterPosition = 807;
             this.splitContainerControl1.TabIndex = 2;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -452,27 +465,12 @@
             this.axTOCControl1.Location = new System.Drawing.Point(0, 30);
             this.axTOCControl1.Name = "axTOCControl1";
             this.axTOCControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTOCControl1.OcxState")));
-            this.axTOCControl1.Size = new System.Drawing.Size(247, 554);
+            this.axTOCControl1.Size = new System.Drawing.Size(247, 568);
             this.axTOCControl1.TabIndex = 0;
             // 
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btn_FullExtent);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "地图浏览";
-            // 
-            // btn_FullExtent
-            // 
-            this.btn_FullExtent.Caption = "全图";
-            this.btn_FullExtent.Glyph = global::XizheGIS.Properties.Resources.bolocalization_32x32;
-            this.btn_FullExtent.Id = 12;
-            this.btn_FullExtent.Name = "btn_FullExtent";
-            this.btn_FullExtent.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btn_FullExtent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_FullExtent_ItemClick);
             // 
             // FormMain
             // 
