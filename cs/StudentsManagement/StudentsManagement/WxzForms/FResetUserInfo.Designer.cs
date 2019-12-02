@@ -74,6 +74,7 @@
             this.btn_NewUName_Ok.Size = new System.Drawing.Size(45, 23);
             this.btn_NewUName_Ok.TabIndex = 2;
             this.btn_NewUName_Ok.Text = "Ok";
+            this.btn_NewUName_Ok.Click += new System.EventHandler(this.btn_NewUName_Ok_Click);
             // 
             // tbx_NewUName
             // 
@@ -104,6 +105,7 @@
             this.btn_NewPassword_Ok.Size = new System.Drawing.Size(45, 23);
             this.btn_NewPassword_Ok.TabIndex = 2;
             this.btn_NewPassword_Ok.Text = "Ok";
+            this.btn_NewPassword_Ok.Click += new System.EventHandler(this.btn_NewPassword_Ok_Click);
             // 
             // labelControl4
             // 

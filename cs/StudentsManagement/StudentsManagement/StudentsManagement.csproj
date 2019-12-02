@@ -142,8 +142,8 @@
     <Compile Include="WxzForms\FResetUserInfo.Designer.cs">
       <DependentUpon>FResetUserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="WxzForms\FSignIn.xaml.cs">
-      <DependentUpon>FSignIn.xaml</DependentUpon>
+    <Compile Include="WxzForms\FSign.xaml.cs">
+      <DependentUpon>FSign.xaml</DependentUpon>
     </Compile>
     <Compile Include="WxzForms\FStudentInfo.cs">
       <SubType>Form</SubType>
@@ -169,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WxzForms\FSignIn.xaml">
+    <Page Include="WxzForms\FSign.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

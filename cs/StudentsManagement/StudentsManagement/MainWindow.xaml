@@ -57,6 +57,9 @@
             </dxr:RibbonDefaultPageCategory>
         </dxr:RibbonControl>
         <dxr:RibbonStatusBarControl Grid.Row="2">
+            <dxr:RibbonStatusBarControl.RightItems>
+                <dxb:BarEditItem x:Name="tbx_UserInfo" Content=""></dxb:BarEditItem>
+            </dxr:RibbonStatusBarControl.RightItems>
             <dxr:RibbonStatusBarControl.LeftItems>
                 <dxb:BarEditItem x:Name="tbx_LocationInfo" Content=""></dxb:BarEditItem>
                 <dxb:BarEditItem x:Name="tbx_MapScaleInfo" Content=""></dxb:BarEditItem>

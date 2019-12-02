@@ -58,7 +58,7 @@ namespace StudentsManagement.WxzForms
             string strUsername = tbx_SignIn_Username.Text,
                    strPassword = tbx_SignIn_Password.Text;
             using (DataTable dt = WxzUtils.Sql.GetDataTable(
-                String.Format("SELECT UPassword FROM UserInfo WHERE UName = '{0}'", strUsername)))
+                String.Format("SELECT UPassword, Id FROM UserInfo WHERE UName = '{0}'", strUsername)))
             {
                 if (dt.Rows.Count == 0 || dt.Rows[0][0].ToString() != strPassword)
                 {
@@ -67,7 +67,7 @@ namespace StudentsManagement.WxzForms
                 }
                 else
                 {
-                    new MainWindow().Show();
+                    new MainWindow(dt.Rows[0][1].ToString(), strUsername).Show();
                     this.Close();
                 }
             }

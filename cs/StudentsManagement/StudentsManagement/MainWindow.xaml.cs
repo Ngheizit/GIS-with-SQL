@@ -23,6 +23,7 @@ using ESRI.ArcGIS.Geodatabase;
 namespace StudentsManagement
 {
     public delegate void Update();
+    public delegate void UpdateStr(string str);
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -35,11 +36,17 @@ namespace StudentsManagement
         private WxzForms.FAddStudent f_AddStudent;
         private WxzForms.FStudentInfo f_StudentInfo;
 
-        public MainWindow()
+        private string _id, _name;
+
+        public MainWindow(string id, string name)
         {
             InitializeComponent();
             this.axMapControl_Main = new AxMapControl();
             mapHost.Child = axMapControl_Main;
+
+            this._id = id;
+            this._name = name;
+            tbx_UserInfo.Content = String.Format("🧛‍{0}（ID：{1}）", _name, _id);
         }
 
         private void ThemedWindow_Loaded(object sender, RoutedEventArgs e)
@@ -305,14 +312,22 @@ namespace StudentsManagement
             catch{ }
         }
 
+
+        private void UpdataUserInfo(string newUName)
+        {
+            this._name = newUName;
+            tbx_UserInfo.Content = String.Format("🧛‍{0}（ID：{1}）", _name, _id);
+        }
         private void btn_NewUName_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            new WxzForms.FResetUserInfo(true).ShowDialog();
+            WxzForms.FResetUserInfo f_ResetUserInfo = new WxzForms.FResetUserInfo(true, _id);
+            f_ResetUserInfo.update += UpdataUserInfo;
+            f_ResetUserInfo.ShowDialog();
         }
 
         private void btn_NewUPassword_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            new WxzForms.FResetUserInfo(false).ShowDialog();
+            new WxzForms.FResetUserInfo(false, _id).ShowDialog();
         }
 
         
