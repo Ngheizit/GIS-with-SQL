@@ -281,10 +281,17 @@ namespace StudentsManagement.WxzUtils
         public static void ZoomToSelectedStudent()
         {
             IFeatureLayer pFeatureLayer = GetFeatureLayerByName("Students");
-            IEnvelope pEnv = GetSelectFeature(pFeatureLayer).Extent;
-            pEnv.Expand(5, 5, false);
-            m_pMapC2.Extent = pEnv;
-            m_pMapC2.Refresh();
+            try
+            {
+                IEnvelope pEnv = GetSelectFeature(pFeatureLayer).Extent;
+                pEnv.Expand(5, 5, false);
+                m_pMapC2.Extent = pEnv;
+                m_pMapC2.Refresh();
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("未选择学生信息");
+            }
         }
     }
 }
