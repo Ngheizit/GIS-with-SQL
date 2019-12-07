@@ -335,7 +335,7 @@ namespace StudentManagementSystem
         }
         private void btn_distributed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            double R = MeasureUtils.GetRValue(AeUtils.GetStudentList(), 9600000000000.0);
         }
         private void btn_ClearAnalysis_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

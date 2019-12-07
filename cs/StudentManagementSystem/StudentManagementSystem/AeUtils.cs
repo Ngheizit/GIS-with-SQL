@@ -190,6 +190,7 @@ namespace StudentManagementSystem
         public static void DefaultTool()
         {
             m_pMapC2.CurrentTool = null;
+            m_pMapC2.MousePointer = esriControlsMousePointer.esriPointerArrow;
         }
         public static void ZoomInTool()
         {
@@ -399,7 +400,6 @@ namespace StudentManagementSystem
                 Geometry = pPolyline
             };
             IGraphicsContainer pGC = m_pMapC2.Map as IGraphicsContainer;
-            pGC.DeleteAllElements();
             pGC.AddElement(pElement, 0);
             IEnvelope pEnvelope = pPolyline.Envelope;
             pEnvelope.Expand(5, 5, true);
@@ -409,7 +409,6 @@ namespace StudentManagementSystem
         public static void DrawCenterPoint(IPoint point) // 绘制平均中心
         {
             IGraphicsContainer pGC = m_pMapC2.Map as IGraphicsContainer;
-            pGC.DeleteAllElements();
             pGC.AddElement(new MarkerElementClass() {
                 Geometry = point,
                 SpatialReference = point.SpatialReference,

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::XizheGIS.SplashScreen1), true, true);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btn_ResetPassword = new DevExpress.XtraBars.BarButtonItem();
             this.btn_SignOut = new DevExpress.XtraBars.BarButtonItem();
@@ -70,7 +71,6 @@
             this.axPageLayoutControl_Main = new ESRI.ArcGIS.Controls.AxPageLayoutControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.axTOCControl1 = new ESRI.ArcGIS.Controls.AxTOCControl();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::XizheGIS.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -470,7 +470,7 @@
             // 
             // splashScreenManager1
             // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            splashScreenManager1.ClosingDelay = 500;
             // 
             // FormMain
             // 

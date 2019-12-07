@@ -13,3 +13,4 @@ D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\D
 D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormStudentInfo.resources
 D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormNearly.resources
 D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.WaitForm1.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormRValue.resources

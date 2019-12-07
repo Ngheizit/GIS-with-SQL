@@ -133,6 +133,12 @@
     <Compile Include="Forms\FormNearly.Designer.cs">
       <DependentUpon>FormNearly.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormRValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRValue.Designer.cs">
+      <DependentUpon>FormRValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormStudentInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormNearly.resx">
       <DependentUpon>FormNearly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRValue.resx">
+      <DependentUpon>FormRValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormStudentInfo.resx">
       <DependentUpon>FormStudentInfo.cs</DependentUpon>
