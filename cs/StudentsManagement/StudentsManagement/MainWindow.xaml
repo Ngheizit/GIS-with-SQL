@@ -65,8 +65,15 @@
                 <dxb:BarEditItem x:Name="tbx_MapScaleInfo" Content=""></dxb:BarEditItem>
             </dxr:RibbonStatusBarControl.LeftItems>
         </dxr:RibbonStatusBarControl>
-        <i:WindowsFormsHost x:Name="mapHost" Grid.Row="1" Margin="0,0,376,0"/>
-        <DataGrid x:Name="DataGridView_Student" Grid.Row="1" IsReadOnly="True" HorizontalAlignment="Right" Width="376" SelectionMode="Single" SelectionChanged="DataGridView_Student_SelectionChanged" MouseDoubleClick="DataGridView_Student_MouseDoubleClick" AutoGeneratingColumn="DataGridView_Student_AutoGeneratingColumn" />
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <i:WindowsFormsHost x:Name="mapHost" Grid.Row="1" Grid.Column="0"/>
+            <DataGrid x:Name="DataGridView_Student" IsReadOnly="True" Grid.Column="1" SelectionMode="Single" SelectionChanged="DataGridView_Student_SelectionChanged" MouseDoubleClick="DataGridView_Student_MouseDoubleClick" AutoGeneratingColumn="DataGridView_Student_AutoGeneratingColumn" />
+        </Grid>
 
 
     </Grid>

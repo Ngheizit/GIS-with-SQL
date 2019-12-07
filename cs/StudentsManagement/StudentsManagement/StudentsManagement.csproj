@@ -133,6 +133,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AeUtils.cs" />
     <Compile Include="WxzForms\FAddStudent.xaml.cs">
       <DependentUpon>FAddStudent.xaml</DependentUpon>
     </Compile>

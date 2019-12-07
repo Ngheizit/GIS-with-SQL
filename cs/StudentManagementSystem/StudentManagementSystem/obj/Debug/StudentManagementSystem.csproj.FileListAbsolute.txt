@@ -1,0 +1,15 @@
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\bin\Debug\StudentManagementSystem.exe
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\bin\Debug\StudentManagementSystem.pdb
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.csprojResolveAssemblyReference.cache
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.FormMain.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Properties.Resources.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.csproj.GenerateResource.Cache
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.exe.licenses
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.exe
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.pdb
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\bin\Debug\StudentManagementSystem.exe.config
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormHawkEye.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormEditStudent.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormStudentInfo.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.Forms.FormNearly.resources
+D:\gitproj\gis2sql\this\cs\StudentManagementSystem\StudentManagementSystem\obj\Debug\StudentManagementSystem.WaitForm1.resources
