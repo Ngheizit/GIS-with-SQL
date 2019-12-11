@@ -70,7 +70,7 @@ namespace HeizitGIS
         private void UpdateReceiveMsg()
         {
             listView_receive.Items.Clear();
-            string sql = String.Format("SELECT FromName, SendTime, IsRead, ID FROM ViewMsg WHERE ToUser = {0}", _fromID);
+            string sql = String.Format("SELECT FromName, SendTime, IsRead, ID FROM ViewMsg WHERE ToID = {0}", _fromID);
             DataTable dt = SQLHelper.GetDataTable(sql);
             int len = dt.Rows.Count;
             for (int i = 0; i < len; i++)

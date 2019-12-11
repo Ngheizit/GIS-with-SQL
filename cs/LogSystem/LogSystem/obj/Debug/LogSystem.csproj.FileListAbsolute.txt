@@ -1,0 +1,11 @@
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\bin\Debug\LogSystem.exe.config
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\bin\Debug\LogSystem.exe
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\bin\Debug\LogSystem.pdb
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.FormMain.resources
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.Properties.Resources.resources
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.FormSignIn.resources
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.csproj.GenerateResource.Cache
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.exe
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.pdb
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.exe.licenses
+D:\gitproj\gis2sql\this\cs\LogSystem\LogSystem\obj\Debug\LogSystem.csprojResolveAssemblyReference.cache
